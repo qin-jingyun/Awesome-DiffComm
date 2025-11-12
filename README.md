@@ -3,7 +3,7 @@
 # 😎 Generative AI Meets 6G and Beyond:<br>Diffusion Models for Semantic Communications
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![arXiv](https://img.shields.io/badge/arXiv-Coming%20Soon-b31b1b.svg)]() 
+[![arXiv](https://img.shields.io/badge/arXiv-2511.08416-b31b1b.svg)](https://arxiv.org/abs/2511.08416) 
 [![IEEE](https://img.shields.io/badge/IEEE-Under%20Review-blue.svg)]()
 [![Project Page](https://img.shields.io/badge/Project-Page-green.svg)]()
 [![Stars](https://img.shields.io/github/stars/qin-jingyun/Awesome-DiffComm?style=social&logo=github)](https://github.com/qin-jingyun/Awesome-DiffComm)
@@ -71,7 +71,7 @@ We believe this article may be helpful to the following groups of people:
 
 ## 📇 Table of Contents
 
-- [😎 Generative AI Meets 6G and Beyond: Diffusion Models for Semantic Communications](#-generative-ai-meets-6g-and-beyond-diffusion-models-for-semantic-communications)
+- [😎 Generative AI Meets 6G and Beyond:Diffusion Models for Semantic Communications](#-generative-ai-meets-6g-and-beyonddiffusion-models-for-semantic-communications)
   - [📋 TL;DR](#-tldr)
   - [📇 Table of Contents](#-table-of-contents)
   - [🎓 Fundamentals of Diffusion Models](#-fundamentals-of-diffusion-models)
@@ -606,9 +606,9 @@ If you find this article or repository helpful, please consider citing:
 
 ```bibtex
 @article{qin-diffcomm,
-    author  = {},
+    author  = {H. L. Qin and J. Dai and G. Lu and S. Shao and S. Wang and T. Xu and W. Zhang and P. Zhang and K. B. Letaief},
     title   = {Generative AI Meets 6G and Beyond: Diffusion Models for Semantic Communications},
-    journal = {},
+    journal = {arXiv preprint arXiv:2511.08416},
     volume  = {},
     number  = {},
     pages   = {},
