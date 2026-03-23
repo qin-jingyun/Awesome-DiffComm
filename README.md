@@ -5,7 +5,7 @@
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![arXiv](https://img.shields.io/badge/arXiv-2511.08416-b31b1b.svg)](https://arxiv.org/abs/2511.08416) 
 [![IEEE](https://img.shields.io/badge/IEEE-Under%20Review-blue.svg)]()
-[![Project Page](https://img.shields.io/badge/Project-Page-green.svg)]()
+[![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://qin-jingyun.github.io/Awesome-DiffComm)
 [![Stars](https://img.shields.io/github/stars/qin-jingyun/Awesome-DiffComm?style=social&logo=github)](https://github.com/qin-jingyun/Awesome-DiffComm)
 
 [![License](https://img.shields.io/badge/License-MIT-yellowgreen.svg)](LICENSE)
@@ -15,7 +15,7 @@
 
 <!-- ⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹ -->
 
-[Hai-Long Qin](https://scholar.google.com/citations?user=N33wbdEAAAAJ)¹, [Jincheng Dai](https://scholar.google.com/citations?user=0I_YtFsAAAAJ)¹, [Guo Lu](https://scholar.google.com/citations?user=R9iwlJcAAAAJ)², [Shuo Shao](https://ieeexplore.ieee.org/author/37086424888)³, [Sixian Wang](https://scholar.google.com/citations?user=f9s8H6UAAAAJ)², [Tongda Xu](https://scholar.google.com/citations?user=LO8GS7sAAAAJ)⁴,  
+[Hai-Long Qin](https://scholar.google.com/citations?user=N33wbdEAAAAJ)¹, [Jincheng Dai](https://scholar.google.com/citations?user=0I_YtFsAAAAJ)¹, [Guo Lu](https://guolusjtu.github.io/guoluhomepage)², [Shuo Shao](https://ieeexplore.ieee.org/author/37086424888)³, [Sixian Wang](https://scholar.google.com/citations?user=f9s8H6UAAAAJ)², [Tongda Xu](https://tongdaxu.github.io)⁴,  
 [Wenjun Zhang](https://ieeexplore.ieee.org/author/37278428800)², [Ping Zhang](https://ieeexplore.ieee.org/author/37274503400)¹, [Khaled B. Letaief](https://scholar.google.com/citations?user=6WLhtHgAAAAJ)⁵
 
 ¹ Beijing University of Posts and Telecommunications (BUPT)  
@@ -96,6 +96,9 @@ We believe this article may be helpful to the following groups of people:
     - [Task-Specific Machine Semantic Communications](#task-specific-machine-semantic-communications)
     - [Intent-Driven Agent Semantic Communications](#intent-driven-agent-semantic-communications)
   - [📊 Benchmarks and Datasets](#-benchmarks-and-datasets)
+    - [Benchmarks](#benchmarks)
+      - [Text-to-Image Benchmarks](#text-to-image-benchmarks)
+      - [Video Generation Benchmarks](#video-generation-benchmarks)
     - [Datasets](#datasets)
       - [Audio](#audio)
       - [Image](#image)
@@ -192,7 +195,7 @@ These methods introduce guidance during sampling without modifying the pre-train
 
 <div align="center">
 
-![formula](https://latex.codecogs.com/svg.image?\boldsymbol{s}(\mathbf{x}|\mathbf{y},t)\simeq\boldsymbol{s}_{\boldsymbol{\theta}}(\mathbf{x},t)+\gamma\boldsymbol{g}(\mathbf{y}|\mathbf{x},t))
+![formula](https://latex.codecogs.com/svg.image?\boldsymbol{s}(\mathbf{x}|\mathbf{y},t)\approx\boldsymbol{s}_{\boldsymbol{\theta}}(\mathbf{x},t)+\gamma\boldsymbol{g}(\mathbf{y}|\mathbf{x},t))
 
 </div>
 
@@ -238,7 +241,7 @@ These methods incorporate conditioning directly during model training.
 
 <div align="center">
 
-![formula](https://latex.codecogs.com/svg.image?\boldsymbol{s}(\mathbf{x}|\mathbf{y},t)\simeq(1-\gamma)\boldsymbol{s}_{\boldsymbol{\theta}}(\mathbf{x},t)+\gamma\boldsymbol{s}_{\boldsymbol{\theta}}(\mathbf{x}|\mathbf{y},t))
+![formula](https://latex.codecogs.com/svg.image?\boldsymbol{s}(\mathbf{x}|\mathbf{y},t)\approx(1-\gamma)\boldsymbol{s}_{\boldsymbol{\theta}}(\mathbf{x},t)+\gamma\boldsymbol{s}_{\boldsymbol{\theta}}(\mathbf{x}|\mathbf{y},t))
 
 </div>
 
@@ -269,6 +272,7 @@ Distilling multi-step diffusion into fewer steps or single-step models.
 | 3 | **LCM** - Latent Consistency Model | arXiv'23 | Distills diffusion into few-step latent consistency models | [![arXiv](https://img.shields.io/badge/arXiv-2310.04378-b31b1b)](https://arxiv.org/abs/2310.04378) [![GitHub](https://img.shields.io/github/stars/luosiallen/latent-consistency-model?style=social)](https://github.com/luosiallen/latent-consistency-model) [![Replicate](https://img.shields.io/badge/Replicate-Demo-yellow.svg?logo=replicate&logoColor=white)](https://replicate.com/luosiallen/latent-consistency-model) [![Website](https://img.shields.io/badge/Project-Page-green)](https://latent-consistency-models.github.io/) |
 | 4 | **DMD2** - Distribution Matching Distillation v2 | NeurIPS'24 | Improved distribution matching | [![arXiv](https://img.shields.io/badge/arXiv-2405.14867-b31b1b)](https://arxiv.org/abs/2405.14867) [![GitHub](https://img.shields.io/github/stars/tianweiy/DMD2?style=social)](https://github.com/tianweiy/DMD2) [![HF](https://img.shields.io/badge/🤗-Models-yellow)](https://huggingface.co/tianweiy/DMD2) [![Website](https://img.shields.io/badge/Project-Page-green)](https://tianweiy.github.io/dmd2/) |
 | 5 | **CTM** - Consistency Trajectory Model | ICLR'24 | Trajectory consistency modeling | [![arXiv](https://img.shields.io/badge/arXiv-2310.02279-b31b1b)](https://arxiv.org/abs/2310.02279) [![GitHub](https://img.shields.io/github/stars/sony/ctm?style=social)](https://github.com/sony/ctm) [![Website](https://img.shields.io/badge/Project-Page-green)](https://consistencytrajectorymodel.github.io/CTM) |
+| 6 | **iCT** - Improved Consistency Training | ICML'24 | Improved consistency training without teacher models | [![arXiv](https://img.shields.io/badge/arXiv-2310.14189-b31b1b)](https://arxiv.org/abs/2310.14189) [![GitHub](https://img.shields.io/github/stars/openai/consistency_models_cifar10?style=social)](https://github.com/openai/consistency_models_cifar10) |
 
 ### Structure Pruning
 
@@ -281,6 +285,7 @@ Reducing model parameters through structured pruning.
 | 3 | **LD-Pruner** | CVPR'24 | Latent diffusion pruning | [![Website](https://img.shields.io/badge/Paper-Link-blue)](https://openaccess.thecvf.com/content/CVPR2024W/EDGE/html/Castells_LD-Pruner_Efficient_Pruning_of_Latent_Diffusion_Models_using_Task-Agnostic_Insights_CVPRW_2024_paper.html) |
 | 4 | **DiP-GO** | NeurIPS'24 | Diffusion pruning with gradient optimization | [![arXiv](https://img.shields.io/badge/arXiv-2410.16942-b31b1b)](https://arxiv.org/abs/2410.16942) [![GitHub](https://img.shields.io/github/stars/haoweiz23/dip-go?style=social)](https://github.com/haoweiz23/dip-go) |
 | 5 | **AdaDiff** | ECCV'24 | Adaptive diffusion pruning | [![arXiv](https://img.shields.io/badge/arXiv-2309.17074-b31b1b)](https://arxiv.org/abs/2309.17074) [![GitHub](https://img.shields.io/github/stars/Tangshengku/AdaDiff?style=social)](https://github.com/Tangshengku/AdaDiff) |
+| 6 | **SnapFusion** | NeurIPS'23 | Mobile diffusion via architecture evolution and data distillation | [![arXiv](https://img.shields.io/badge/arXiv-2306.00980-b31b1b)](https://arxiv.org/abs/2306.00980) [![Website](https://img.shields.io/badge/Project-Page-green)](https://snap-research.github.io/SnapFusion/) |
 
 ### Cache Reuse
 
@@ -290,9 +295,10 @@ Reusing intermediate computations across sampling steps.
 |---|--------|-------|-------------|-------|
 | 1 | **DeepCache** | CVPR'24 | Deep feature caching | [![arXiv](https://img.shields.io/badge/arXiv-2312.00858-b31b1b)](https://arxiv.org/abs/2312.00858) [![GitHub](https://img.shields.io/github/stars/horseee/DeepCache?style=social)](https://github.com/horseee/DeepCache) [![Website](https://img.shields.io/badge/Project-Page-green)](https://horseee.github.io/Diffusion_DeepCache/) |
 | 2 | **BlockCaching** | CVPR'24 | Block-wise caching strategy | [![arXiv](https://img.shields.io/badge/arXiv-2312.03209-b31b1b)](https://arxiv.org/abs/2312.03209) [![Website](https://img.shields.io/badge/Project-Page-green)](https://fwmb.github.io/blockcaching) |
-| 3 | **NonUniform** | CVPR'24 | Non-uniform step caching | [![arXiv](https://img.shields.io/badge/arXiv-2402.17376-b31b1b)](https://arxiv.org/abs/2402.17376) [![GitHub](https://img.shields.io/github/stars/scxue/DM-NonUniform?style=social)](https://github.com/scxue/DM-NonUniform) |
-| 4 | **L2C** - Learning to Cache | NeurIPS'24 | Learned caching policies | [![arXiv](https://img.shields.io/badge/arXiv-2406.01733-b31b1b)](https://arxiv.org/abs/2406.01733) [![GitHub](https://img.shields.io/github/stars/horseee/learning-to-cache?style=social)](https://github.com/horseee/learning-to-cache) |
+| 3 | **L2C** - Learning to Cache | NeurIPS'24 | Learned caching policies | [![arXiv](https://img.shields.io/badge/arXiv-2406.01733-b31b1b)](https://arxiv.org/abs/2406.01733) [![GitHub](https://img.shields.io/github/stars/horseee/learning-to-cache?style=social)](https://github.com/horseee/learning-to-cache) |
+| 4 | **ToCa** - Token-wise Caching | ICLR'25 | Token-wise feature caching for DiT acceleration | [![arXiv](https://img.shields.io/badge/arXiv-2410.05317-b31b1b)](https://arxiv.org/abs/2410.05317) [![GitHub](https://img.shields.io/github/stars/Shenyi-Z/ToCa?style=social)](https://github.com/Shenyi-Z/ToCa) |
 | 5 | **ClusCa** - Clustered Caching | MM'25 | Compute-efficient clustering cache | [![arXiv](https://img.shields.io/badge/arXiv-2509.10312-b31b1b)](https://arxiv.org/abs/2509.10312) [![GitHub](https://img.shields.io/github/stars/Shenyi-Z/Cache4Diffusion?style=social)](https://github.com/Shenyi-Z/Cache4Diffusion) |
+| 6 | **TaylorSeer** | ICCV'25 | Taylor expansion-based feature forecasting for DiT acceleration | [![arXiv](https://img.shields.io/badge/arXiv-2503.06923-b31b1b)](https://arxiv.org/abs/2503.06923) [![GitHub](https://img.shields.io/github/stars/Shenyi-Z/TaylorSeer?style=social)](https://github.com/Shenyi-Z/TaylorSeer) [![Website](https://img.shields.io/badge/Project-Page-green)](https://taylorseer.github.io/TaylorSeer/) |
 
 ### Flow Matching
 
@@ -305,6 +311,8 @@ Transforming diffusion into deterministic flows for faster sampling.
 | 3 | **PeRFlow** - Piecewise Rectified Flow | NeurIPS'24 | Piecewise rectification for accelerating diffusion models | [![arXiv](https://img.shields.io/badge/arXiv-2405.07510-b31b1b)](https://arxiv.org/abs/2405.07510) [![GitHub](https://img.shields.io/github/stars/magic-research/piecewise-rectified-flow?style=social)](https://github.com/magic-research/piecewise-rectified-flow) [![HF](https://img.shields.io/badge/🤗-Models-yellow)](https://huggingface.co/hansyan) [![Website](https://img.shields.io/badge/Project-Page-green)](https://piecewise-rectified-flow.github.io) |
 | 4 | **InstaFlow** | ICLR'24 | One-step generation via rectified flow | [![arXiv](https://img.shields.io/badge/arXiv-2309.06380-b31b1b)](https://arxiv.org/abs/2309.06380) [![GitHub](https://img.shields.io/github/stars/gnobitab/InstaFlow?style=social)](https://github.com/gnobitab/InstaFlow) |
 | 5 | **MeanFlow** | NeurIPS'25 | Mean-field flow matching | [![arXiv](https://img.shields.io/badge/arXiv-2505.13447-b31b1b)](https://arxiv.org/abs/2505.13447) [![GitHub](https://img.shields.io/github/stars/Gsunshine/meanflow?style=social)](https://github.com/Gsunshine/meanflow) |
+| 6 | **Stable Diffusion 3** | arXiv'24 | Scaling rectified flow transformers for high-resolution image synthesis (MMDiT) | [![arXiv](https://img.shields.io/badge/arXiv-2403.03206-b31b1b)](https://arxiv.org/abs/2403.03206) [![GitHub](https://img.shields.io/github/stars/Stability-AI/sd3.5?style=social)](https://github.com/Stability-AI/sd3.5) [![HF](https://img.shields.io/badge/🤗-Models-yellow)](https://huggingface.co/stabilityai/stable-diffusion-3.5-large) |
+| 7 | **FLUX** | arXiv'25 | High-quality flow matching-based text-to-image model with hybrid transformer architecture | [![arXiv](https://img.shields.io/badge/arXiv-2506.15742-b31b1b)](https://arxiv.org/abs/2506.15742) [![GitHub](https://img.shields.io/github/stars/black-forest-labs/flux?style=social)](https://github.com/black-forest-labs/flux) [![HF](https://img.shields.io/badge/🤗-Models-yellow)](https://huggingface.co/black-forest-labs/FLUX.1-dev) |
 
 ## 🌐 Generalized Diffusion Models
 
@@ -321,6 +329,7 @@ Extending diffusion to multiple modalities beyond images.
 | 3 | **Show-o** | ICLR'25 | Unified image and text generation | [![arXiv](https://img.shields.io/badge/arXiv-2408.12528-b31b1b)](https://arxiv.org/abs/2408.12528) [![GitHub](https://img.shields.io/github/stars/showlab/Show-o?style=social)](https://github.com/showlab/Show-o) |
 | 4 | **Transfusion** | ICLR'25 | Combining diffusion and autoregression | [![arXiv](https://img.shields.io/badge/arXiv-2408.11039-b31b1b)](https://www.arxiv.org/abs/2408.11039) [![GitHub](https://img.shields.io/github/stars/lucidrains/transfusion-pytorch?style=social)](https://github.com/lucidrains/transfusion-pytorch) |
 | 5 | **UniDisc** | arXiv'25 | Unified discrete-continuous diffusion | [![arXiv](https://img.shields.io/badge/arXiv-2503.20853-b31b1b)](https://arxiv.org/abs/2503.20853) [![GitHub](https://img.shields.io/github/stars/alexanderswerdlow/unidisc?style=social)](https://github.com/alexanderswerdlow/unidisc) [![HF](https://img.shields.io/badge/🤗-Models-yellow)](https://huggingface.co/aswerdlow/unidisc_interleaved) [![Website](https://img.shields.io/badge/Project-Page-green)](https://unidisc.github.io/) |
+| 6 | **OmniGen2** | arXiv'25 | Unified image generation model with multi-modal conditioning | [![arXiv](https://img.shields.io/badge/arXiv-2506.18871-b31b1b)](https://arxiv.org/abs/2506.18871) [![GitHub](https://img.shields.io/github/stars/VectorSpaceLab/OmniGen2?style=social)](https://github.com/VectorSpaceLab/OmniGen2) [![HF](https://img.shields.io/badge/🤗-Models-yellow)](https://huggingface.co/OmniGen2/OmniGen2) [![Website](https://img.shields.io/badge/Project-Page-green)](https://vectorspacelab.github.io/OmniGen2/) |
 
 ### Domain Adaptation
 
@@ -333,6 +342,7 @@ Adapting diffusion models to specialized domains.
 | 3 | **DreamBooth** | CVPR'23 | Personalization with few examples | [![arXiv](https://img.shields.io/badge/arXiv-2208.12242-b31b1b)](https://arxiv.org/abs/2208.12242) [![GitHub](https://img.shields.io/github/stars/google/dreambooth?style=social)](https://github.com/google/dreambooth) [![Website](https://img.shields.io/badge/Project-Page-green)](https://dreambooth.github.io) |
 | 4 | **I2SB** - Image-to-Image Schrödinger Bridge | ICML'23 | Image-to-image translation | [![arXiv](https://img.shields.io/badge/arXiv-2302.05872-b31b1b)](https://arxiv.org/abs/2302.05872) [![GitHub](https://img.shields.io/github/stars/NVlabs/I2SB?style=social)](https://github.com/NVlabs/I2SB) [![Website](https://img.shields.io/badge/Project-Page-green)](https://i2sb.github.io/) |
 | 5 | **P2P-Bridge** | ECCV'24 | Point-to-point bridging | [![arXiv](https://img.shields.io/badge/arXiv-2408.16325-b31b1b)](https://arxiv.org/abs/2408.16325) [![GitHub](https://img.shields.io/github/stars/matvogel/P2P-Bridge?style=social)](https://github.com/matvogel/P2P-Bridge) [![Website](https://img.shields.io/badge/Project-Page-green)](https://p2p-bridge.github.io) |
+| 6 | **OT-CFM** | ICLR'23 | Optimal transport conditional flow matching for efficient domain coupling | [![arXiv](https://img.shields.io/badge/arXiv-2302.00482-b31b1b)](https://arxiv.org/abs/2302.00482) [![GitHub](https://img.shields.io/github/stars/atong01/conditional-flow-matching?style=social)](https://github.com/atong01/conditional-flow-matching) |
 
 ### Task Generalization
 
@@ -344,7 +354,9 @@ Generalizing diffusion models across multiple tasks.
 | 2 | **Diffusion Policy** | RSS'23 | Visuomotor policy learning | [![arXiv](https://img.shields.io/badge/arXiv-2303.04137-b31b1b)](https://arxiv.org/abs/2303.04137v4) [![GitHub](https://img.shields.io/github/stars/real-stanford/diffusion_policy?style=social)](https://github.com/real-stanford/diffusion_policy) [![Website](https://img.shields.io/badge/Project-Page-green)](https://diffusion-policy.cs.columbia.edu) |
 | 3 | **DDPO** - Denoising Diffusion Policy Optimization | ICLR'24 | RL fine-tuning for diffusion | [![arXiv](https://img.shields.io/badge/arXiv-2305.13301-b31b1b)](https://arxiv.org/abs/2305.13301) [![GitHub](https://img.shields.io/github/stars/jannerm/ddpo?style=social)](https://github.com/jannerm/ddpo) [![Website](https://img.shields.io/badge/Project-Page-green)](https://rl-diffusion.github.io) |
 | 4 | **C-LoRA** - Continual LoRA | TMLR'24 | Continual learning for diffusion | [![arXiv](https://img.shields.io/badge/arXiv-2304.06027-b31b1b)](https://arxiv.org/abs/2304.06027) [![Website](https://img.shields.io/badge/Project-Page-green)](https://jamessealesmith.github.io/continual-diffusion) |
-| 5 | **B²-DiffuRL** | CVPR'25 | Bidirectional diffusion for RL | [![arXiv](https://img.shields.io/badge/arXiv-2503.11240-b31b1b)](https://arxiv.org/abs/2503.11240) [![GitHub](https://img.shields.io/github/stars/hu-zijing/B2-DiffuRL?style=social)](https://github.com/hu-zijing/B2-DiffuRL) |
+| 5 | **Diffusion-ES** | CVPR'24 | Evolutionary search with diffusion for black-box trajectory optimization | [![arXiv](https://img.shields.io/badge/arXiv-2402.06559-b31b1b)](https://arxiv.org/abs/2402.06559) [![GitHub](https://img.shields.io/github/stars/bhyang/diffusion-es?style=social)](https://github.com/bhyang/diffusion-es) [![Website](https://img.shields.io/badge/Project-Page-green)](https://diffusion-es.github.io/) |
+| 6 | **B²-DiffuRL** | CVPR'25 | Bidirectional diffusion for RL | [![arXiv](https://img.shields.io/badge/arXiv-2503.11240-b31b1b)](https://arxiv.org/abs/2503.11240) [![GitHub](https://img.shields.io/github/stars/hu-zijing/B2-DiffuRL?style=social)](https://github.com/hu-zijing/B2-DiffuRL) |
+| 7 | **DPPO** - Diffusion Policy Policy Optimization | ICLR'25 | PPO fine-tuning for diffusion policies in robotics | [![arXiv](https://img.shields.io/badge/arXiv-2409.00588-b31b1b)](https://arxiv.org/abs/2409.00588) [![GitHub](https://img.shields.io/github/stars/irom-princeton/dppo?style=social)](https://github.com/irom-princeton/dppo) [![Website](https://img.shields.io/badge/Project-Page-green)](https://diffusion-ppo.github.io/) |
 
 ## 🛜 Diffusion Models for Semantic Communications
 
@@ -364,8 +376,9 @@ Representative works using diffusion models for data compression across image, v
 | 6 | **CorrDiff** | ICML'24 | Correcting diffusion compression with privileged end-to-end decoder | [![arXiv](https://img.shields.io/badge/arXiv-2404.04916-b31b1b)](https://arxiv.org/abs/2404.04916) |
 | 7 | **Foundation Diffusion** | ECCV'24 | Lossy compression using pre-trained foundation models without fine-tuning | [![arXiv](https://img.shields.io/badge/arXiv-2404.08580-b31b1b)](https://arxiv.org/abs/2404.08580) |
 | 8 | **Extreme Video Compression** | WCSP'24 | Extreme video compression with diffusion-based predictive generation (0.02 bpp) | [![arXiv](https://img.shields.io/badge/arXiv-2402.08934-b31b1b)](https://arxiv.org/abs/2402.08934) [![GitHub](https://img.shields.io/github/stars/ElesionKyrie/Extreme-Video-Compression-With-Prediction-Using-Pre-trainded-Diffusion-Models-?style=social)](https://github.com/ElesionKyrie/Extreme-Video-Compression-With-Prediction-Using-Pre-trainded-Diffusion-Models-) |
-| 9 | **CaDM** | arXiv'24 | Codec-aware diffusion for neural-enhanced video streaming | [![arXiv](https://img.shields.io/badge/arXiv-2211.08428-b31b1b)](https://arxiv.org/abs/2211.08428) |
-| 10 | **UQDM** | ICLR'25 | Progressive compression with universally quantized diffusion models | [![arXiv](https://img.shields.io/badge/arXiv-2412.10935-b31b1b)](https://arxiv.org/abs/2412.10935) [![GitHub](https://img.shields.io/github/stars/mandt-lab/uqdm?style=social)](https://github.com/mandt-lab/uqdm) [![Website](https://img.shields.io/badge/Project-Page-green)](https://www.justuswill.com/uqdm/) |
+| 9 | **UQDM** | ICLR'25 | Progressive compression with universally quantized diffusion models | [![arXiv](https://img.shields.io/badge/arXiv-2412.10935-b31b1b)](https://arxiv.org/abs/2412.10935) [![GitHub](https://img.shields.io/github/stars/mandt-lab/uqdm?style=social)](https://github.com/mandt-lab/uqdm) [![Website](https://img.shields.io/badge/Project-Page-green)](https://www.justuswill.com/uqdm/) |
+| 10 | **DiffC** | ICLR'25 | Zero-shot lossy compression using pretrained Stable Diffusion models | [![arXiv](https://img.shields.io/badge/arXiv-2501.09815-b31b1b)](https://arxiv.org/abs/2501.09815) [![GitHub](https://img.shields.io/github/stars/JeremyIV/diffc?style=social)](https://github.com/JeremyIV/diffc) [![Website](https://img.shields.io/badge/Project-Page-green)](https://jeremyiv.github.io/diffc-project-page/) |
+| 11 | **PICD** | CVPR'25 | Versatile perceptual image compression with diffusion rendering for screen and natural images | [![arXiv](https://img.shields.io/badge/arXiv-2505.05853-b31b1b)](https://arxiv.org/abs/2505.05853) |
 
 ### Fidelity-Oriented Human Semantic Communications
 
@@ -379,14 +392,15 @@ Diffusion models for high-quality semantic image, video, and audio transmission 
 | 4 | **CDDM** | TWC'24 | Channel denoising diffusion models adapting to AWGN/Rayleigh channels | [![arXiv](https://img.shields.io/badge/arXiv-2309.08895-b31b1b)](https://arxiv.org/abs/2309.08895) [![GitHub](https://img.shields.io/github/stars/Wireless3C-SJTU/CDDM-channel-denoising-diffusion-model-for-semantic-communication?style=social)](https://github.com/Wireless3C-SJTU/CDDM-channel-denoising-diffusion-model-for-semantic-communication) |
 | 5 | **Gen-SC** | WCSP'24 | Transmits images efficiently by sending text descriptions and reconstructing images via a text-to-image diffusion model | [![arXiv](https://img.shields.io/badge/arXiv-2409.17104-b31b1b)](https://arxiv.org/abs/2409.17104) |
 | 6 | **CDM-JSCC** | WCL'24 | Enhances the perceptual quality of transmitted images by utilizing a rate-adaptive conditional diffusion model | [![arXiv](https://img.shields.io/badge/arXiv-2409.02597-b31b1b)](https://arxiv.org/abs/2409.02597) [![GitHub](https://img.shields.io/github/stars/zhang-guangyi/cdm-jscc?style=social)](https://github.com/zhang-guangyi/cdm-jscc) |
-| 7 | **Img2Img-SC** | arXiv'24 | Language-oriented semantic communication framework that transmits both textual descriptions and compressed image embeddings | [![arXiv](https://img.shields.io/badge/arXiv-2405.09976-b31b1b)](https://arxiv.org/abs/2405.09976) [![GitHub](https://img.shields.io/github/stars/ispamm/Img2Img-SC?style=social)](https://github.com/ispamm/Img2Img-SC) |
-| 8 | **DiffJSCC** | arXiv'24 | Pre-trained Stable Diffusion with Deep JSCC achieving <0.008 symbols/pixel | [![arXiv](https://img.shields.io/badge/arXiv-2404.17736-b31b1b)](https://arxiv.org/abs/2404.17736) [![GitHub](https://img.shields.io/github/stars/mingyuyng/DiffJSCC?style=social)](https://github.com/mingyuyng/DiffJSCC) |
-| 9 | **MU-GSC** | arXiv'24 | Swin Transformer JSCC with diffusion decoder, 17.75% PSNR improvement | [![arXiv](https://img.shields.io/badge/arXiv-2408.05112-b31b1b)](https://arxiv.org/abs/2408.05112) |
+| 7 | **Img2Img-SC** | MLSP'24 | Language-oriented semantic communication framework that transmits both textual descriptions and compressed image embeddings | [![arXiv](https://img.shields.io/badge/arXiv-2405.09976-b31b1b)](https://arxiv.org/abs/2405.09976) [![GitHub](https://img.shields.io/github/stars/ispamm/Img2Img-SC?style=social)](https://github.com/ispamm/Img2Img-SC) |
+| 8 | **MU-GSC** | arXiv'24 | Swin Transformer JSCC with diffusion decoder, 17.75% PSNR improvement | [![arXiv](https://img.shields.io/badge/arXiv-2408.05112-b31b1b)](https://arxiv.org/abs/2408.05112) |
+| 9 | **DiffJSCC** | TMLCN'25 | Pre-trained Stable Diffusion with Deep JSCC achieving <0.008 symbols/pixel | [![arXiv](https://img.shields.io/badge/arXiv-2404.17736-b31b1b)](https://arxiv.org/abs/2404.17736) [![GitHub](https://img.shields.io/github/stars/mingyuyng/DiffJSCC?style=social)](https://github.com/mingyuyng/DiffJSCC) |
 | 10 | **DiffCom** | JSAC'25 | Probabilistic sampling using channel signals as fine-grained conditions | [![arXiv](https://img.shields.io/badge/arXiv-2406.07390-b31b1b)](https://arxiv.org/abs/2406.07390) [![GitHub](https://img.shields.io/github/stars/wsxtyrdd/diffcom?style=social)](https://github.com/wsxtyrdd/diffcom) [![Website](https://img.shields.io/badge/Project-Page-green)](https://semcomm.github.io/DiffCom/) |
 | 11 | **GVSC** | TVT'25 | First generative video semantic communication at low bandwidth ratio | [![arXiv](https://img.shields.io/badge/arXiv-2502.13838-b31b1b)](https://arxiv.org/abs/2502.13838) |
 | 12 | **Wang et al.** | arXiv'25 | Receiver-driven retransmission with caption-guided latent diffusion inpainting | [![arXiv](https://img.shields.io/badge/arXiv-2510.26442-b31b1b)](https://arxiv.org/abs/2510.26442) |
 | 13 | **SGD-JSCC** | arXiv'25 | DiT-based diffusion with semantic side information for channel denoising | [![arXiv](https://img.shields.io/badge/arXiv-2501.01138-b31b1b)](https://arxiv.org/abs/2501.01138) [![GitHub](https://img.shields.io/github/stars/MauroZMJ/SGDJSCC?style=social)](https://github.com/MauroZMJ/SGDJSCC) |
 | 14 | **WVSC-D** | arXiv'25 | Wireless video semantic communication framework with decoupled diffusion multi-frame compensation | [![arXiv](https://img.shields.io/badge/arXiv-2511.02478-b31b1b)](https://arxiv.org/abs/2511.02478) |
+| 15 | **DiT-JSCC** | arXiv'26 |  A DiT-based generative JSCC that ensures high semantic consistency for image transmission under extreme channel conditions | [![arXiv](https://img.shields.io/badge/arXiv-2601.03112-b31b1b)](https://arxiv.org/abs/2601.03112) |
 
 ### Task-Specific Machine Semantic Communications
 
@@ -397,12 +411,15 @@ Resource-efficient diffusion models optimized for machine semantic communication
 | 1 | **GESCO** | arXiv'23 | Pioneering diffusion-based machine semantic communication transmitting compressed semantic maps | [![arXiv](https://img.shields.io/badge/arXiv-2306.04321-b31b1b)](https://arxiv.org/abs/2306.04321) [![GitHub](https://img.shields.io/github/stars/ispamm/GESCO?style=social)](https://github.com/ispamm/GESCO) |
 | 2 | **Qiao et al.** | WCL'24 | Latency-aware generative semantic communications with pre-trained diffusion models | [![Website](https://img.shields.io/badge/Paper-Link-blue)](https://ieeexplore.ieee.org/document/10599525) |
 | 3 | **SCGSC** | WCNC'24 | Semantic change driven generative machine semantic communication framework | [![arXiv](https://img.shields.io/badge/arXiv-2309.12775-b31b1b)](https://arxiv.org/abs/2309.12775) [![GitHub](https://img.shields.io/github/stars/wty2011jl/SCDGSC?style=social)](https://github.com/wty2011jl/SCDGSC.git) |
-| 4 | **LDM-SemCom** | arXiv'24 | Real-time edge computing with end-to-end consistency distillation | [![arXiv](https://img.shields.io/badge/arXiv-2406.06644-b31b1b)](https://arxiv.org/abs/2406.06644) [![GitHub](https://img.shields.io/github/stars/JianhuaPei/LDM-enabled-SemCom-system?style=social)](https://github.com/JianhuaPei/LDM-enabled-SemCom-system) |
+| 4 | **LDM-SemCom** | TWC'25 | Real-time edge computing with end-to-end consistency distillation | [![arXiv](https://img.shields.io/badge/arXiv-2406.06644-b31b1b)](https://arxiv.org/abs/2406.06644) [![GitHub](https://img.shields.io/github/stars/JianhuaPei/LDM-enabled-SemCom-system?style=social)](https://github.com/JianhuaPei/LDM-enabled-SemCom-system) |
 | 5 | **Guo et al.** | TWC'25 | Treating wireless transmission as forward diffusion process with VAE modules | [![arXiv](https://img.shields.io/badge/arXiv-2407.18468-b31b1b)](https://arxiv.org/abs/2407.18468) |
 | 6 | **Q-GESCO** | WCL'25 | Quantized models reducing memory 75% and FLOPs 79% for resource-constrained devices | [![arXiv](https://img.shields.io/badge/arXiv-2410.02491-b31b1b)](https://arxiv.org/abs/2410.02491) [![GitHub](https://img.shields.io/github/stars/ispamm/Q-GESCO?style=social)](https://github.com/ispamm/Q-GESCO) |
 | 7 | **CASC** | ICC'25 | Latent diffusion with Condition-Aware NN, 51.7% inference time reduction | [![arXiv](https://img.shields.io/badge/arXiv-2411.06552-b31b1b)](https://arxiv.org/abs/2411.06552) |
-| 8 | **DiffSem** | arXiv'25 | Task-oriented with privacy, notable accuracy improvement on MNIST | [![arXiv](https://img.shields.io/badge/arXiv-2506.19886-b31b1b)](https://arxiv.org/abs/2506.19886) |
-| 9 | **SC-Diffusion** | TMLCN'25 | Parameter generation for task-oriented semantic communications via conditional diffusion model | [![Website](https://img.shields.io/badge/Paper-Link-blue)](https://ieeexplore.ieee.org/document/11195863) |
+| 8 | **SC-Diffusion** | TMLCN'25 | Parameter generation for task-oriented semantic communications via conditional diffusion model | [![Website](https://img.shields.io/badge/Paper-Link-blue)](https://ieeexplore.ieee.org/document/11195863) |
+| 9 | **Khalid et al.** | ICML'25 | Semantic image communication via Stable Cascade with compact latent embeddings | [![arXiv](https://img.shields.io/badge/arXiv-2507.17416-b31b1b)](https://arxiv.org/abs/2507.17416) |
+| 10 | **Wang et al.** | arXiv'25 | Training-free LDM receiver with SDE-derived SNR-to-timestep mapping for zero-shot generalization | [![arXiv](https://img.shields.io/badge/arXiv-2506.05710-b31b1b)](https://arxiv.org/abs/2506.05710) |
+| 11 | **DiffSem** | arXiv'25 | Task-oriented with privacy, notable accuracy improvement on MNIST | [![arXiv](https://img.shields.io/badge/arXiv-2506.19886-b31b1b)](https://arxiv.org/abs/2506.19886) |
+| 12 | **SS-MGSC** | arXiv'25 | A multi-user generative semantic communication framework utilizing semantic-splitting and diffusion models for personalized vehicular networks | [![arXiv](https://img.shields.io/badge/arXiv-2507.01333-b31b1b)](https://arxiv.org/abs/2507.01333) |
 
 ### Intent-Driven Agent Semantic Communications
 
@@ -411,9 +428,35 @@ AI agents with diffusion models for intent-driven semantic communications.
 | # | Method | Venue | Description | Links |
 |---|--------|-------|-------------|-------|
 | 1 | **A-GSC** | TWC'24 | Agent-driven generative semantic communications with cross-modality and prediction based on diffusion RL | [![arXiv](https://img.shields.io/badge/arXiv-2404.06997-b31b1b)](https://arxiv.org/abs/2404.06997) |
+| 2 | **Semantic Collaboration** | CNIOT'24 | A multi-agent collaboration framework based on semantic communication for search and rescue tasks | [![Website](https://img.shields.io/badge/Paper-Link-blue)](https://dl.acm.org/doi/abs/10.1145/3670105.3670127) |
+| 3 | **CSCA** | TMC'26 | A diffusion policy-empowered cognitive SemCom agent for intent-driven multimodal communication planning at the edge | [![Website](https://img.shields.io/badge/Paper-Link-blue)](https://ieeexplore.ieee.org/abstract/document/11085101) |
 
 
 ## 📊 Benchmarks and Datasets
+
+### Benchmarks
+
+Widely-used open-source benchmarks for evaluating diffusion model generation quality, prompt fidelity, and compositional capabilities.
+
+#### Text-to-Image Benchmarks
+
+| # | Benchmark | Description | Source |
+|---|-----------|-------------|--------|
+| 1 | **DrawBench** | 200 challenging prompts across 11 categories (counting, colors, spatial, text rendering, etc.) introduced by Imagen for qualitative human evaluation of T2I models. | [![arXiv](https://img.shields.io/badge/arXiv-2205.11487-b31b1b)](https://arxiv.org/abs/2205.11487) |
+| 2 | **PartiPrompts (P2)** | 1,600 diverse English prompts spanning 12 categories and 11 challenge aspects for holistic T2I evaluation. Released with the Parti model. | [![arXiv](https://img.shields.io/badge/arXiv-2206.10789-b31b1b)](https://arxiv.org/abs/2206.10789) [![HF](https://img.shields.io/badge/🤗-Dataset-yellow)](https://huggingface.co/datasets/nateraw/parti-prompts) |
+| 3 | **TIFA** | VQA-based automatic evaluation measuring T2I faithfulness by generating question-answer pairs from prompts and verifying against images. 4K prompts, 25K questions across 12 categories. | [![arXiv](https://img.shields.io/badge/arXiv-2303.11897-b31b1b)](https://arxiv.org/abs/2303.11897) [![GitHub](https://img.shields.io/github/stars/Yushi-Hu/tifa?style=social)](https://github.com/Yushi-Hu/tifa) [![Website](https://img.shields.io/badge/Project-Page-green)](https://tifa-benchmark.github.io/) |
+| 4 | **T2I-CompBench** | Comprehensive compositional T2I benchmark evaluating attribute binding, spatial relationships, and complex compositions with detection-based metrics. | [![arXiv](https://img.shields.io/badge/arXiv-2307.06350-b31b1b)](https://arxiv.org/abs/2307.06350) [![GitHub](https://img.shields.io/github/stars/Karine-Huang/T2I-CompBench?style=social)](https://github.com/Karine-Huang/T2I-CompBench) |
+| 5 | **GenEval** | Compositional generation benchmark evaluating object count, spatial relations, attribute binding, and co-occurrence accuracy via object detection pipelines. | [![arXiv](https://img.shields.io/badge/arXiv-2310.11513-b31b1b)](https://arxiv.org/abs/2310.11513) [![GitHub](https://img.shields.io/github/stars/djghosh13/geneval?style=social)](https://github.com/djghosh13/geneval) |
+| 6 | **DPG-Bench** | Dense prompt generation benchmark with long, detailed prompts synthesized from multi-annotation sources for evaluating models on complex, attribute-rich descriptions. | [![arXiv](https://img.shields.io/badge/arXiv-2403.05135-b31b1b)](https://arxiv.org/abs/2403.05135) [![GitHub](https://img.shields.io/github/stars/TencentQQGYLab/ELLA?style=social)](https://github.com/TencentQQGYLab/ELLA) |
+| 7 | **MJHQ-30K** | 30K high-quality Midjourney images across 10 categories for automatic FID-based aesthetic quality evaluation. Curated with aesthetic and CLIP score filtering. | [![arXiv](https://img.shields.io/badge/arXiv-2402.17245-b31b1b)](https://arxiv.org/abs/2402.17245) [![HF](https://img.shields.io/badge/🤗-Dataset-yellow)](https://huggingface.co/datasets/playgroundai/MJHQ-30K) |
+| 8 | **GenAI-Bench** | 1,600 compositional prompts from professional designers, evaluating advanced reasoning (counting, comparison, logic) with human ratings across 10 leading T2I/T2V models. | [![arXiv](https://img.shields.io/badge/arXiv-2406.13743-b31b1b)](https://arxiv.org/abs/2406.13743) [![GitHub](https://img.shields.io/github/stars/linzhiqiu/t2v_metrics?style=social)](https://github.com/linzhiqiu/t2v_metrics) [![HF](https://img.shields.io/badge/🤗-Dataset-yellow)](https://huggingface.co/datasets/BaiqiL/GenAI-Bench) |
+
+#### Video Generation Benchmarks
+
+| # | Benchmark | Description | Source |
+|---|-----------|-------------|--------|
+| 1 | **VBench** | Comprehensive video generation benchmark evaluating 16 dimensions including temporal consistency, motion quality, aesthetic fidelity, and subject identity. | [![arXiv](https://img.shields.io/badge/arXiv-2311.17982-b31b1b)](https://arxiv.org/abs/2311.17982) [![GitHub](https://img.shields.io/github/stars/Vchitect/VBench?style=social)](https://github.com/Vchitect/VBench) |
+| 2 | **EvalCrafter** | Benchmark and pipeline for evaluating video generation models across visual quality, text-video alignment, motion quality, and temporal consistency. | [![arXiv](https://img.shields.io/badge/arXiv-2310.11440-b31b1b)](https://arxiv.org/abs/2310.11440) [![GitHub](https://img.shields.io/github/stars/evalcrafter/EvalCrafter?style=social)](https://github.com/evalcrafter/EvalCrafter) [![Website](https://img.shields.io/badge/Project-Page-green)](https://evalcrafter.github.io/) |
 
 ### Datasets
 
@@ -496,6 +539,7 @@ AI agents with diffusion models for intent-driven semantic communications.
 | 3 | **DOTA** | Dataset for Object deTection in Aerial images with oriented bounding boxes. 15 categories. | 188K instances | Oriented Object Detection, Aerial Imagery | [![arXiv](https://img.shields.io/badge/arXiv-1711.10398-b31b1b)](https://arxiv.org/abs/1711.10398) [![Link](https://img.shields.io/badge/Data-Link-blue)](https://captain-whu.github.io/DOTA/) |
 | 4 | **LEVIR-CD** | Large-scale building change detection dataset from Google Earth with 637 image pairs. | 637 pairs | Change Detection, Building Analysis | [![Link](https://img.shields.io/badge/Data-Link-blue)](https://justchenhao.github.io/LEVIR/) |
 
+
 ## 📏 Evaluation Metrics
 
 ### Perception Metrics
@@ -524,6 +568,8 @@ AI agents with diffusion models for intent-driven semantic communications.
 | 2 | **FID** | Fréchet Inception Distance. Calculates Fréchet distance between feature distributions of real and generated images in Inception-v3 space. Lower FID indicates better quality and diversity. | [![arXiv](https://img.shields.io/badge/arXiv-1706.08500-b31b1b)](https://arxiv.org/abs/1706.08500) |
 | 3 | **KID** | Kernel Inception Distance. Unbiased alternative to FID using polynomial kernel on Inception features. More reliable for small sample sizes. | [![arXiv](https://img.shields.io/badge/arXiv-1801.01401-b31b1b)](https://arxiv.org/abs/1801.01401) |
 | 4 | **IS** | Inception Score. Evaluates both quality (classification confidence) and diversity (marginal class distribution). | [![arXiv](https://img.shields.io/badge/arXiv-1606.03498-b31b1b)](https://arxiv.org/abs/1606.03498) |
+| 5 | **MUSIQ** | Multi-scale Image Quality Transformer. Handles native-resolution images via multi-scale patch embedding without fixed-size cropping, enabling more robust no-reference quality assessment. | [![arXiv](https://img.shields.io/badge/arXiv-2108.05997-b31b1b)](https://arxiv.org/abs/2108.05997) [![GitHub](https://img.shields.io/github/stars/google-research/google-research?style=social)](https://github.com/google-research/google-research/tree/master/musiq) |
+| 6 | **CLIP-IQA** | Leverages CLIP's vision-language representations for no-reference image quality and aesthetic assessment via prompt-based antonym pairing. | [![arXiv](https://img.shields.io/badge/arXiv-2207.12396-b31b1b)](https://arxiv.org/abs/2207.12396) [![GitHub](https://img.shields.io/github/stars/IceClear/CLIP-IQA?style=social)](https://github.com/IceClear/CLIP-IQA) |
 
 ### Semantic Metrics
 
@@ -532,6 +578,11 @@ AI agents with diffusion models for intent-driven semantic communications.
 | 1 | **CLIPScore** | Measures text-image alignment using CLIP embeddings. Computed as cosine similarity between CLIP image and text features. | [![arXiv](https://img.shields.io/badge/arXiv-2104.08718-b31b1b)](https://arxiv.org/abs/2104.08718) |
 | 2 | **ViTScore** | Uses Vision Transformer features to evaluate semantic similarity between images. Captures high-level semantic content beyond pixel-level differences. | [![arXiv](https://img.shields.io/badge/arXiv-2309.04891-b31b1b)](https://arxiv.org/abs/2309.04891) |
 | 3 | **SeSS** | Semantic Similarity Score. Based on Scene Graph Generation and graph matching, shifts image similarity scores into semantic-level graph matching scores. | [![arXiv](https://img.shields.io/badge/arXiv-2406.03865-b31b1b)](https://arxiv.org/abs/2406.03865) |
+| 4 | **DreamSim** | Learned perceptual metric trained on synthetic triplet judgments from diffusion models, capturing mid-level semantic similarity beyond low-level texture. | [![arXiv](https://img.shields.io/badge/arXiv-2306.09344-b31b1b)](https://arxiv.org/abs/2306.09344) [![GitHub](https://img.shields.io/github/stars/ssundaram21/dreamsim?style=social)](https://github.com/ssundaram21/dreamsim) |
+| 5 | **ImageReward** | Text-image alignment metric learned from human preference rankings via reward modeling, designed to evaluate text-to-image generation quality. | [![arXiv](https://img.shields.io/badge/arXiv-2304.05977-b31b1b)](https://arxiv.org/abs/2304.05977) [![GitHub](https://img.shields.io/github/stars/THUDM/ImageReward?style=social)](https://github.com/THUDM/ImageReward) |
+| 6 | **HPSv2** | Human Preference Score v2. Fine-tuned CLIP model predicting human aesthetic preferences for generated images, trained on large-scale human choice data. | [![arXiv](https://img.shields.io/badge/arXiv-2306.09341-b31b1b)](https://arxiv.org/abs/2306.09341) [![GitHub](https://img.shields.io/github/stars/tgxs002/HPSv2?style=social)](https://github.com/tgxs002/HPSv2) |
+| 7 | **PickScore** | Preference-based scoring model trained on the Pick-a-Pic dataset of human pairwise preferences for text-to-image generation. | [![arXiv](https://img.shields.io/badge/arXiv-2305.01569-b31b1b)](https://arxiv.org/abs/2305.01569) [![GitHub](https://img.shields.io/github/stars/yuvalkirstain/PickScore?style=social)](https://github.com/yuvalkirstain/PickScore) |
+
 
 ## 🔗 Other Resources
 
@@ -554,6 +605,8 @@ AI agents with diffusion models for intent-driven semantic communications.
 | 12 | **Efficient Diffusion Models: A Survey** | Shen et al. | 2025 | [![arXiv](https://img.shields.io/badge/arXiv-2502.06805-b31b1b)](https://arxiv.org/abs/2502.06805) [![GitHub](https://img.shields.io/github/stars/AIoT-MLSys-Lab/Efficient-Diffusion-Model-Survey?style=social)](https://github.com/AIoT-MLSys-Lab/Efficient-Diffusion-Model-Survey) |
 | 13 | **A Survey on Diffusion Language Models** | Li et al. | 2025 | [![arXiv](https://img.shields.io/badge/arXiv-2508.10875-b31b1b)](https://arxiv.org/abs/2508.10875) [![GitHub](https://img.shields.io/github/stars/VILA-Lab/Awesome-DLMs?style=social)](https://github.com/VILA-Lab/Awesome-DLMs) |
 | 14 | **The Principles of Diffusion Models** | Lai et al. | 2025 | [![arXiv](https://img.shields.io/badge/arXiv-2510.21890-b31b1b)](https://arxiv.org/abs/2510.21890) |
+| 15 | **Flow Matching Guide and Code** | Lipman et al. | 2024 | [![arXiv](https://img.shields.io/badge/arXiv-2412.06264-b31b1b)](https://arxiv.org/abs/2412.06264) [![GitHub](https://img.shields.io/github/stars/facebookresearch/flow_matching?style=social)](https://github.com/facebookresearch/flow_matching) |
+| 16 | **An Introduction to Flow Matching and Diffusion Models** | Holderrieth & Erives | 2025 | [![arXiv](https://img.shields.io/badge/arXiv-2506.02070-b31b1b)](https://arxiv.org/abs/2506.02070) [![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://diffusion.csail.mit.edu/) |
 
 #### Semantic Communications
 | # | Paper | Authors | Year | Links |
@@ -577,7 +630,7 @@ AI agents with diffusion models for intent-driven semantic communications.
 |---|-------|-------------------------|------|-------|
 | 1 | **Stanford CS236: Deep Generative Models** | Stefano Ermon et al. | University Course | [![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://deepgenerativemodels.github.io/) |
 | 2 | **MIT 6.S978: Deep Generative Models** | Kaiming He et al. | University Course | [![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://mit-6s978.github.io/) |
-| 3 | **MIT 6.S184: Generative AI with Stochastic Differential Equations** | Peter Holderrieth et al. | University Course | [![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://diffusion.csail.mit.edu/) |
+| 3 | **MIT 6.S184: Introduction to Flow Matching and Diffusion Models** | Peter Holderrieth & Ezra Erives | University Course | [![arXiv](https://img.shields.io/badge/arXiv-2506.02070-b31b1b)](https://arxiv.org/abs/2506.02070) [![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://diffusion.csail.mit.edu/) |
 | 4 | **Diffusion Models Course** | Hugging Face | Online Course | [![GitHub](https://img.shields.io/github/stars/huggingface/diffusion-models-class?style=social)](https://github.com/huggingface/diffusion-models-class) |
 | 5 | **NeurIPS 2023 Workshop: Diffusion Models** | NeurIPS | Workshop | [![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://neurips.cc/virtual/2023/workshop/66539) |
 | 6 | **Diffusion and Score-Based Generative Models** | Yang Song | Lecture | [![YouTube](https://img.shields.io/badge/Watch-Video-red.svg)](https://www.youtube.com/watch?v=wMmqCMwuM2Q) |
@@ -609,15 +662,23 @@ If you find this article or repository helpful, please consider citing:
     author  = {H. L. Qin and J. Dai and G. Lu and S. Shao and S. Wang and T. Xu and W. Zhang and P. Zhang and K. B. Letaief},
     title   = {Generative AI Meets 6G and Beyond: Diffusion Models for Semantic Communications},
     journal = {arXiv preprint arXiv:2511.08416},
-    volume  = {},
-    number  = {},
-    pages   = {},
     year    = {2025}
 }
 ```
 
 **Related Papers from Our Group**
 
+```bibtex
+@article{dai-gaicomm,
+	author  = {J. Dai and X. Qin and S. Wang and L. Xu and K. Niu and P. Zhang},
+	title   = {Deep Generative Modeling Reshapes Compression and Transmission: From Efficiency to Resiliency},
+	journal = {IEEE Wireless Commun.},
+	volume  = {31},
+	number  = {4},
+	pages   = {48--56},
+	year    = {2024}
+}
+```
 ```bibtex
 @article{wang-diffcom,
 	author  = {S. Wang and J. Dai and K. Tan and X. Qin and K. Niu and P. Zhang},
@@ -627,6 +688,25 @@ If you find this article or repository helpful, please consider citing:
 	number  = {7},
 	pages   = {2651--2666},
 	year    = {2025}
+}
+```
+```bibtex
+@article{qin-semcod,
+    author  = {H. L. Qin and J. Dai and S. Wang and X. Qin and S. Shao and K. Niu and W. Xu and P. Zhang},
+    title   = {Neural Coding is Not Always Semantic: Toward the Standardized Coding Workflow in Semantic Communications},
+    journal = {IEEE Commun. Stand. Mag.},
+    volume  = {9},
+    number  = {4},
+    pages   = {24--33},
+    year    = {2025}
+}
+```
+```bibtex
+@article{tan-ditjscc,
+    author  = {K. Tan and J. Dai and S. Wang and G. Lu and S. Shao and K. Niu and W. Zhang and P. Zhang},
+    title   = {DiT-JSCC: Rethinking Deep JSCC with Diffusion Transformers and Semantic Representations},
+    journal = {arXiv preprint arXiv:2601.03112},
+    year    = {2026}
 }
 ```
 

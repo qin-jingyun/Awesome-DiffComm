@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n-key="pageTitle">Diffusion Models for Semantic Communications</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/Q.ico" type="image/x-icon" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+  svg: { fontCache: 'global' }
+};
+</script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script src="translations.js" defer></script>
+    <script src="script.js" defer></script>
+    <script src="viz.js" defer></script>
+</head>
+<body>
+    <div class="top-controls">
+        <div class="related-links-wrapper">
+            <button class="control-btn related-links-toggle" id="related-links-toggle" aria-label="Related links">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                </svg>
+                <span class="tooltip" data-i18n-key="related_links_btn">Related links</span>
+            </button>
+            <div class="related-links-dropdown" id="related-links-dropdown">
+                <a href="https://ieeexplore.ieee.org/document/10628030" target="_blank">[MWC 2024] Generative AI Reshapes Compression and Transmission</a>
+                <a href="https://semcomm.github.io/DiffCom" target="_blank">&#11088; [JSAC 2025] DiffCom / HiFi-DiffCom / Blind-DiffCom Series</a>
+                <a href="https://qin-jingyun.github.io/SemCod" target="_blank">[COMSTD 2025] Standardized Semantic Coding Workflow</a>
+                <a href="https://github.com/semcomm/DiTJSCC" target="_blank">[Coming Soon] DiT-JSCC Series: DiT-Based Deep JSCC Backbone</a>
+            </div>
+        </div>
+        <button id="bibtex-modal-trigger" class="control-btn" aria-label="Cite this paper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 2v12c0 1.25.75 2 2 2z"></path>
+                <path d="M14 21c3 0 7-1 7-8V5c0-1.25-.75-2.017-2-2h-4c-1.25 0-2 .75-2 2v12c0 1.25.75 2 2 2z"></path>
+            </svg>
+            <span class="tooltip" data-i18n-key="tooltip_cite">Cite this paper</span>
+        </button>
+        <button id="lang-toggle" class="control-btn" aria-label="Language">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span class="tooltip" data-i18n-key="tooltip_lang">Language</span>
+        </button>
+    </div>
+
+    <div class="side-nav">
+        <a href="#tldr" class="nav-dot" data-section="tldr"><span class="tooltip" data-i18n-key="nav_tldr">TL;DR</span></a>
+        <a href="#prelim" class="nav-dot" data-section="prelim"><span class="tooltip" data-i18n-key="nav_prelim">Preliminaries</span></a>
+        <a href="#fundamentals" class="nav-dot" data-section="fundamentals"><span class="tooltip" data-i18n-key="nav_fundamentals">Fundamentals</span></a>
+        <a href="#conditional" class="nav-dot" data-section="conditional"><span class="tooltip" data-i18n-key="nav_conditional">Conditional DMs</span></a>
+        <a href="#efficient" class="nav-dot" data-section="efficient"><span class="tooltip" data-i18n-key="nav_efficient">Efficient DMs</span></a>
+        <a href="#generalized" class="nav-dot" data-section="generalized"><span class="tooltip" data-i18n-key="nav_generalized">Generalized DMs</span></a>
+        <a href="#references" class="nav-dot" data-section="references"><span class="tooltip" data-i18n-key="nav_references">References</span></a>
+    </div>
+
+    <div class="container">
+        <header class="header fade-in-section">
+            <h1 data-i18n-key="paperTitle">
+                Generative AI Meets 6G and Beyond: Diffusion Models for Semantic Communications
+            </h1>
+
+            <div class="authors">
+                <div class="author"><a href="https://scholar.google.com/citations?user=N33wbdEAAAAJ" target="_blank"><span data-i18n-key="author_1">Hai-Long Qin<sup>1</sup></span></a></div>
+                <div class="author"><a href="https://scholar.google.com/citations?user=0I_YtFsAAAAJ" target="_blank"><span data-i18n-key="author_2">Jincheng Dai<sup>1</sup></span></a></div>
+                <div class="author"><a href="https://guolusjtu.github.io/guoluhomepage" target="_blank"><span data-i18n-key="author_3">Guo Lu<sup>2</sup></span></a></div>
+                <div class="author"><a href="https://ieeexplore.ieee.org/author/37086424888" target="_blank"><span data-i18n-key="author_4">Shuo Shao<sup>3</sup></span></a></div>
+                <div class="author"><a href="https://scholar.google.com/citations?user=f9s8H6UAAAAJ" target="_blank"><span data-i18n-key="author_5">Sixian Wang<sup>2</sup></span></a></div>
+                <div class="author"><a href="https://tongdaxu.github.io" target="_blank"><span data-i18n-key="author_6">Tongda Xu<sup>4</sup></span></a></div>
+            </div>
+            <div class="authors authors-fellows">
+                <div class="author"><a href="https://ieeexplore.ieee.org/author/37278428800" target="_blank"><span data-i18n-key="author_7">Wenjun Zhang<sup>2</sup></span></a></div>
+                <div class="author"><a href="https://ieeexplore.ieee.org/author/37274503400" target="_blank"><span data-i18n-key="author_8">Ping Zhang<sup>1</sup></span></a></div>
+                <div class="author"><a href="https://scholar.google.com/citations?user=6WLhtHgAAAAJ" target="_blank"><span data-i18n-key="author_9">Khaled B. Letaief<sup>5</sup></span></a></div>
+            </div>
+
+            <div class="affiliations">
+                <span class="affiliation" data-i18n-key="affiliation1"><sup>1</sup>Beijing University of Posts and Telecommunications (BUPT)</span>
+                <span class="affiliation" data-i18n-key="affiliation2"><sup>2</sup>Shanghai Jiao Tong University (SJTU)</span>
+                <span class="affiliation" data-i18n-key="affiliation3"><sup>3</sup>University of Shanghai for Science and Technology (USST)</span>
+                <span class="affiliation" data-i18n-key="affiliation4"><sup>4</sup>Tsinghua University (THU)</span>
+                <span class="affiliation" data-i18n-key="affiliation5"><sup>5</sup>Hong Kong University of Science and Technology (HKUST)</span>
+            </div>
+
+            <div class="venue" data-i18n-key="venueInfo">
+                IEEE Communications Surveys &amp; Tutorials (COMST), Under Review
+            </div>
+
+            <div class="action-buttons">
+                <a href="https://arxiv.org/abs/2511.08416" class="btn" target="_blank">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    <span>arXiv</span>
+                </a>
+                <a href="#" class="btn" target="_blank">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg>
+                    <span data-i18n-key="btn_paper">Paper</span>
+                </a>
+                <a href="https://github.com/qin-henrylong/Awesome-DiffComm" class="btn" target="_blank">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 7.07 9.67c.5.09.68-.22.68-.48v-1.7c-3.34.72-4.04-1.61-4.04-1.61-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69a3.6 3.6 0 0 1 .1-2.64s.84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.54 1.32.12 2.4.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 22 12 10 10 0 0 0 12 2Z"/></svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- TL;DR -->
+        <section id="tldr" class="section tldr fade-in-section">
+            <div class="tldr-title" data-i18n-key="nav_tldr">TL;DR</div>
+            <div class="section-content">
+                <div data-i18n-key="tldr_content"></div>
+            </div>
+        </section>
+
+        <!-- §2 Preliminaries -->
+        <section id="prelim" class="section fade-in-section">
+            <h2 class="section-title" data-i18n-key="prelim_title">Preliminaries</h2>
+            <div class="section-content tutorial-text">
+                <div data-i18n-key="intro_p1"></div>
+
+                <figure class="fig-placeholder" data-figure="dis-gen">
+                    <img src="images/discriminative-generative.svg" alt="Discriminative vs. Generative Modeling" loading="lazy" style="width: 70%;">
+                    <figcaption data-i18n-key="fig_disgen_caption"></figcaption>
+                </figure>
+
+                <div data-i18n-key="intro_p2"></div>
+
+                <div class="table-wrapper" data-i18n-key="intro_table"></div>
+                <div data-i18n-key="intro_p3"></div>
+            </div>
+        </section>
+
+        <!-- §3.1 Fundamentals of Diffusion Models -->
+        <section id="fundamentals" class="section fade-in-section">
+            <h2 class="section-title" data-i18n-key="fund_title">Fundamentals of Diffusion Models</h2>
+            <div class="section-content tutorial-text">
+
+                <!-- §3.1.1 Score Matching and Langevin Dynamics -->
+                <h3 class="subsection-title" data-i18n-key="sm_title">Score Matching &amp; Langevin Dynamics</h3>
+                <div data-i18n-key="sm_p1"></div>
+                <div data-i18n-key="sm_p2"></div>
+                <h4 class="subsubsection-title" data-i18n-key="sm_langevin_title">Langevin Dynamics</h4>
+                <div data-i18n-key="sm_langevin_p1"></div>
+
+                <figure class="fig-placeholder" data-figure="score-pipeline">
+                    <img src="images/score-pipeline.svg" alt="Score-based Modeling Pipeline" loading="lazy" style="width: 70%;">
+                    <figcaption data-i18n-key="fig_score_caption"></figcaption>
+                </figure>
+
+                <div class="viz-container" id="viz-score-field">
+                    <canvas class="viz-canvas"></canvas>
+                    <div class="viz-controls">
+                        <label><input type="checkbox" id="viz-score-noise" checked> Stochastic</label>
+                        <label>Step size: <input type="range" id="viz-score-step" min="1" max="20" value="8"></label>
+                        <button class="viz-btn" id="viz-score-reset">Reset</button>
+                    </div>
+                    <p class="viz-caption" data-i18n-key="viz_score_caption"></p>
+                </div>
+
+                <div class="collapsible">
+                    <button class="collapsible-toggle" data-i18n-key="code_sm_title">Python: Score Matching &amp; Langevin Sampling</button>
+                    <div class="collapsible-content">
+                        <div data-i18n-key="code_sm_body"></div>
+                    </div>
+                </div>
+
+                <!-- §3.1.2 Score-based Modeling with SDEs -->
+                <h3 class="subsection-title" data-i18n-key="sde_title">Score-Based Modeling with SDEs</h3>
+                <div data-i18n-key="sde_p1"></div>
+                <div data-i18n-key="sde_p2"></div>
+
+                <figure class="fig-placeholder" data-figure="sde-double-column">
+                    <img src="images/forward-reverse-sde.svg" alt="Forward-Reverse SDE Pipeline" loading="lazy" style="width: 100%;">
+                    <figcaption data-i18n-key="fig_sde_caption"></figcaption>
+                </figure>
+
+                <div data-i18n-key="sde_p3"></div>
+
+                <div class="collapsible">
+                    <button class="collapsible-toggle" data-i18n-key="sde_deriv_ve_title">Derivation: Continuous-time VE SDE from SMLD</button>
+                    <div class="collapsible-content">
+                        <div data-i18n-key="sde_deriv_ve_body"></div>
+                    </div>
+                </div>
+
+                <div class="collapsible">
+                    <button class="collapsible-toggle" data-i18n-key="sde_deriv_vp_title">Derivation: Continuous-time VP SDE from DDPM</button>
+                    <div class="collapsible-content">
+                        <div data-i18n-key="sde_deriv_vp_body"></div>
+                    </div>
+                </div>
+
+                <div class="viz-container" id="viz-forward-diffusion">
+                    <canvas class="viz-canvas"></canvas>
+                    <div class="viz-controls">
+                        <label>t: <input type="range" id="viz-forward-t" min="0" max="100" value="0"></label>
+                        <select id="viz-forward-mode">
+                            <option value="vp">VP (DDPM)</option>
+                            <option value="ve">VE (SMLD)</option>
+                        </select>
+                        <button class="viz-btn" id="viz-forward-reset">Reset</button>
+                    </div>
+                    <p class="viz-caption" data-i18n-key="viz_forward_caption"></p>
+                </div>
+
+                <div class="collapsible">
+                    <button class="collapsible-toggle" data-i18n-key="code_ddpm_title">Python: DDPM Training Loop</button>
+                    <div class="collapsible-content">
+                        <div data-i18n-key="code_ddpm_body"></div>
+                    </div>
+                </div>
+
+                <!-- §3.1.3 Solving Reverse Process with Probability Flow ODEs -->
+                <h3 class="subsection-title" data-i18n-key="ode_title">Probability Flow ODEs &amp; Solvers</h3>
+                <div data-i18n-key="ode_p1"></div>
+                <div data-i18n-key="ode_p2"></div>
+
+                <figure class="fig-placeholder" data-figure="pc">
+                    <img src="images/predictor-corrector.svg" alt="Predictor-Corrector Method" loading="lazy" style="width: 70%;">
+                    <figcaption data-i18n-key="fig_pc_caption"></figcaption>
+                </figure>
+
+                <div class="collapsible">
+                    <button class="collapsible-toggle" data-i18n-key="ode_deriv_title">Insight: Sampling as Numerical Solving</button>
+                    <div class="collapsible-content">
+                        <div data-i18n-key="ode_deriv_body"></div>
+                    </div>
+                </div>
+
+                <div class="viz-container" id="viz-reverse-sampling">
+                    <canvas class="viz-canvas"></canvas>
+                    <div class="viz-controls">
+                        <button class="viz-btn" id="viz-reverse-start">Start</button>
+                        <label>Speed: <input type="range" id="viz-reverse-speed" min="1" max="10" value="1"></label>
+                        <button class="viz-btn" id="viz-reverse-reset">Reset</button>
+                    </div>
+                    <p class="viz-caption" data-i18n-key="viz_reverse_caption"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- §3.2 Conditional Diffusion Models -->
+        <section id="conditional" class="section fade-in-section">
+            <h2 class="section-title" data-i18n-key="cond_title">Conditional Diffusion Models</h2>
+            <div class="section-content tutorial-text">
+                <div data-i18n-key="cond_p1"></div>
+
+                <figure class="fig-placeholder" data-figure="inference">
+                    <img src="images/inference-time.svg" alt="Inference-time Conditional Diffusion Models" loading="lazy" style="width: 50%;">
+                    <figcaption data-i18n-key="fig_inference_caption"></figcaption>
+                </figure>
+
+                <!-- §3.2.1 Inference-time Conditioning -->
+                <h3 class="subsection-title" data-i18n-key="cond_infer_title">Inference-time Conditioning</h3>
+                <div data-i18n-key="cond_bayes_p1"></div>
+
+                <h4 class="subsubsection-title" data-i18n-key="cond_cg_title">Classifier Guidance (CG)</h4>
+                <div data-i18n-key="cond_cg_p1"></div>
+
+                <h4 class="subsubsection-title" data-i18n-key="cond_eg_title">Estimator Guidance (DPS &amp; BlindDPS)</h4>
+                <div data-i18n-key="cond_eg_p1"></div>
+                <div data-i18n-key="cond_eg_p2"></div>
+
+                <div class="collapsible">
+                    <button class="collapsible-toggle" data-i18n-key="cond_deriv_title">Tweedie's Formula and the Posterior Mean</button>
+                    <div class="collapsible-content">
+                        <div data-i18n-key="cond_deriv_body"></div>
+                    </div>
+                </div>
+
+                <figure class="fig-placeholder" data-figure="training">
+                    <img src="images/training-time.svg" alt="Training-time Conditional Diffusion Models" loading="lazy" style="width: 50%;">
+                    <figcaption data-i18n-key="fig_training_caption"></figcaption>
+                </figure>
+
+                <!-- §3.2.2 Training-time Conditioning -->
+                <h3 class="subsection-title" data-i18n-key="cond_train_title">Training-time Conditioning</h3>
+                <div data-i18n-key="cond_train_p1"></div>
+
+                <h4 class="subsubsection-title" data-i18n-key="cond_cfg_title">Classifier-Free Guidance (CFG)</h4>
+                <div data-i18n-key="cond_cfg_p1"></div>
+
+                <div class="viz-container" id="viz-guidance">
+                    <canvas class="viz-canvas"></canvas>
+                    <div class="viz-controls">
+                        <label>&gamma;: <input type="range" id="viz-guidance-gamma" min="0" max="50" value="10"></label>
+                        <span id="viz-guidance-gamma-val">1.0</span>
+                        <button class="viz-btn" id="viz-guidance-reset">Reset</button>
+                    </div>
+                    <p class="viz-caption" data-i18n-key="viz_guidance_caption"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- §3.3 Efficient Diffusion Models -->
+        <section id="efficient" class="section fade-in-section">
+            <h2 class="section-title" data-i18n-key="eff_title">Efficient Diffusion Methods</h2>
+            <div class="section-content tutorial-text">
+                <div data-i18n-key="eff_p1"></div>
+                <div class="table-wrapper" data-i18n-key="eff_table"></div>
+
+                <h3 class="subsection-title" data-i18n-key="eff_dr_title">Dimensionality Reduction</h3>
+                <div data-i18n-key="eff_dr_p1"></div>
+
+                <h3 class="subsection-title" data-i18n-key="eff_kd_title">Knowledge Distillation</h3>
+                <div data-i18n-key="eff_kd_p1"></div>
+
+                <h4 class="subsubsection-title" data-i18n-key="cm_title">Consistency Models</h4>
+                <div data-i18n-key="cm_p1"></div>
+                <div data-i18n-key="cm_p2"></div>
+                <div data-i18n-key="cm_p3"></div>
+
+                <div class="collapsible">
+                    <button class="collapsible-toggle" data-i18n-key="cm_deriv_title">Why Doesn't the Model Collapse to a Constant?</button>
+                    <div class="collapsible-content">
+                        <div data-i18n-key="cm_deriv_body"></div>
+                    </div>
+                </div>
+
+                <h3 class="subsection-title" data-i18n-key="eff_sp_title">Structure Pruning</h3>
+                <div data-i18n-key="eff_sp_p1"></div>
+
+                <h3 class="subsection-title" data-i18n-key="eff_cr_title">Cache Reuse</h3>
+                <div data-i18n-key="eff_cr_p1"></div>
+
+                <h3 class="subsection-title" data-i18n-key="eff_fm_title">Flow Matching</h3>
+                <div data-i18n-key="eff_fm_p1"></div>
+                <div data-i18n-key="fm_p1"></div>
+                <div data-i18n-key="fm_p2"></div>
+
+                <figure class="fig-placeholder" data-figure="flow">
+                    <img src="images/flow-matching.svg" alt="Flow Matching Mechanism" loading="lazy" style="width: 75%;">
+                    <figcaption data-i18n-key="fig_flow_caption"></figcaption>
+                </figure>
+
+                <div data-i18n-key="fm_p3"></div>
+
+                <div class="collapsible">
+                    <button class="collapsible-toggle" data-i18n-key="fm_deriv_title">Unifying Score, Velocity, and Consistency</button>
+                    <div class="collapsible-content">
+                        <div data-i18n-key="fm_deriv_body"></div>
+                    </div>
+                </div>
+
+                <div class="viz-container" id="viz-flow-vs-diffusion">
+                    <canvas class="viz-canvas"></canvas>
+                    <div class="viz-controls">
+                        <button class="viz-btn" id="viz-flow-start">Start</button>
+                        <label>Speed: <input type="range" id="viz-flow-speed" min="1" max="10" value="1"></label>
+                        <button class="viz-btn" id="viz-flow-reset">Reset</button>
+                    </div>
+                    <p class="viz-caption" data-i18n-key="viz_flow_caption"></p>
+                </div>
+
+                <div class="collapsible">
+                    <button class="collapsible-toggle" data-i18n-key="code_fm_title">Python: Flow Matching Training</button>
+                    <div class="collapsible-content">
+                        <div data-i18n-key="code_fm_body"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- §3.4 Generalized Diffusion Models -->
+        <section id="generalized" class="section fade-in-section">
+            <h2 class="section-title" data-i18n-key="gen_title">Generalized Diffusion Models</h2>
+            <div class="section-content tutorial-text">
+                <div data-i18n-key="gen_p1"></div>
+
+                <h3 class="subsection-title" data-i18n-key="gen_modality_title">Modality Expansion</h3>
+                <div data-i18n-key="gen_modality_p1"></div>
+
+                <h3 class="subsection-title" data-i18n-key="gen_domain_title">Domain Adaptation</h3>
+                <div data-i18n-key="gen_domain_p1"></div>
+
+                <h4 class="subsubsection-title" data-i18n-key="sb_title">Schr&ouml;dinger Bridges</h4>
+                <div data-i18n-key="sb_p1"></div>
+                <div data-i18n-key="sb_p2"></div>
+                <div data-i18n-key="sb_p3"></div>
+
+                <h3 class="subsection-title" data-i18n-key="gen_task_title">Task Generalization</h3>
+
+                <div data-i18n-key="gen_policy_p1"></div>
+                <div data-i18n-key="gen_policy_p2"></div>
+            </div>
+        </section>
+
+        <!-- References -->
+        <section id="references" class="section fade-in-section">
+            <h2 class="section-title" data-i18n-key="ref_title">References</h2>
+            <div class="section-content tutorial-text">
+                <div data-i18n-key="ref_content"></div>
+            </div>
+        </section>
+
+        <footer class="footer fade-in-section">
+            <p data-i18n-key="footer_text">
+               &copy; 2025 Hai-Long Qin. All rights reserved. | Last updated: March 2026
+            </p>
+        </footer>
+    </div>
+
+    <div id="bibtex-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" data-i18n-key="bib_title">BibTeX Citation</h3>
+                <button class="modal-close" id="modal-close-btn">&times;</button>
+            </div>
+            <textarea id="bibtex-code" readonly>@article{qin-diffcomm,
+    author  = {H. L. Qin and J. Dai and G. Lu and S. Shao and S. Wang and T. Xu and W. Zhang and P. Zhang and K. B. Letaief},
+    title   = {Generative AI Meets 6G and Beyond: Diffusion Models for Semantic Communications},
+    journal = {arXiv preprint arXiv:2511.08416},
+    year    = {2025}
+}</textarea>
+            <div class="modal-actions">
+                <button id="copy-bibtex-btn" data-i18n-key="bib_copy">Copy to Clipboard</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
