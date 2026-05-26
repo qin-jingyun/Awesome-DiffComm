@@ -4,7 +4,7 @@
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![arXiv](https://img.shields.io/badge/arXiv-2511.08416-b31b1b.svg)](https://arxiv.org/abs/2511.08416) 
-[![IEEE](https://img.shields.io/badge/IEEE-Under%20Review-blue.svg)]()
+[![IEEE](https://img.shields.io/badge/IEEE-COMST-blue.svg)](https://ieeexplore.ieee.org/document/11506355)
 [![Project Page](https://img.shields.io/badge/Project-Page-green.svg)](https://qin-jingyun.github.io/Awesome-DiffComm)
 [![Stars](https://img.shields.io/github/stars/qin-jingyun/Awesome-DiffComm?style=social&logo=github)](https://github.com/qin-jingyun/Awesome-DiffComm)
 
@@ -20,7 +20,7 @@
 
 ¹ Beijing University of Posts and Telecommunications (BUPT)  
 ² Shanghai Jiao Tong University (SJTU)  
-³ University of Shanghai for Science and Technology (USST)  
+³ East China Normal University (ECNU)  
 ⁴ Tsinghua University (THU)  
 ⁵ Hong Kong University of Science and Technology (HKUST)  
 <!-- † Corresponding Author -->
@@ -29,7 +29,7 @@
 
 <div align="justify">
 
-> &emsp;**This repository accompanies our IEEE tutorial paper, serving as a living resource for researchers at the intersection of generative AI and wireless communications**. As semantic communications emerge as a paradigm shift from bit-accurate transmission toward meaning-centric communication, diffusion models have become a cornerstone technology enabling receivers to reconstruct high-quality content from minimal semantic cues. This repository provides curated collections of representative works, popular implementations, educational resources, and practical guidelines to help researchers continuously acquire knowledge in this rapidly evolving interdisciplinary field.
+> &emsp;**This repository accompanies our IEEE COMST tutorial paper, serving as a living resource for researchers at the intersection of generative AI and wireless (semantic) communications**. As semantic communications emerge as a paradigm shift from bit-accurate transmission toward meaning-centric communication, diffusion models have become a cornerstone technology enabling receivers to reconstruct high-quality content from minimal semantic cues. This repository provides curated collections of representative works, popular implementations, educational resources, and practical guidelines to help researchers continuously acquire knowledge in this rapidly evolving interdisciplinary field.
 
 </div>
 

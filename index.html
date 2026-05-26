@@ -86,13 +86,13 @@ window.MathJax = {
             <div class="affiliations">
                 <span class="affiliation" data-i18n-key="affiliation1"><sup>1</sup>Beijing University of Posts and Telecommunications (BUPT)</span>
                 <span class="affiliation" data-i18n-key="affiliation2"><sup>2</sup>Shanghai Jiao Tong University (SJTU)</span>
-                <span class="affiliation" data-i18n-key="affiliation3"><sup>3</sup>University of Shanghai for Science and Technology (USST)</span>
+                <span class="affiliation" data-i18n-key="affiliation3"><sup>3</sup>East China Normal University (ECNU)</span>
                 <span class="affiliation" data-i18n-key="affiliation4"><sup>4</sup>Tsinghua University (THU)</span>
                 <span class="affiliation" data-i18n-key="affiliation5"><sup>5</sup>Hong Kong University of Science and Technology (HKUST)</span>
             </div>
 
             <div class="venue" data-i18n-key="venueInfo">
-                IEEE Communications Surveys &amp; Tutorials (COMST), Under Review
+                Accepted by IEEE Communications Surveys &amp; Tutorials (COMST)
             </div>
 
             <div class="action-buttons">
@@ -100,7 +100,7 @@ window.MathJax = {
                     <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                     <span>arXiv</span>
                 </a>
-                <a href="#" class="btn" target="_blank">
+                <a href="https://ieeexplore.ieee.org/document/11506355" class="btn" target="_blank">
                     <svg fill="currentColor" viewBox="0 0 24 24"><path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg>
                     <span data-i18n-key="btn_paper">Paper</span>
                 </a>
@@ -108,6 +108,9 @@ window.MathJax = {
                     <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 7.07 9.67c.5.09.68-.22.68-.48v-1.7c-3.34.72-4.04-1.61-4.04-1.61-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-1.99 1.03-2.69a3.6 3.6 0 0 1 .1-2.64s.84-.27 2.75 1.02a9.58 9.58 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.54 1.32.12 2.4.1 2.64.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 22 12 10 10 0 0 0 12 2Z"/></svg>
                     <span>GitHub</span>
                 </a>
+                <!-- <a href="https://github.com/qin-jingyun/Awesome-DiffComm" class="btn btn-stars" target="_blank">
+                    <img src="https://img.shields.io/github/stars/qin-jingyun/Awesome-DiffComm?style=social&logo=github" alt="GitHub Stars">
+                </a> -->
             </div>
         </header>
 
@@ -155,10 +158,17 @@ window.MathJax = {
                 </figure>
 
                 <div class="viz-container" id="viz-score-field">
-                    <canvas class="viz-canvas"></canvas>
+                    <div class="viz-title-bar">
+                        <svg class="viz-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4m-10-10h4m12 0h4m-3.5-6.5l-2.8 2.8m-7.4 7.4l-2.8 2.8m0-13l2.8 2.8m7.4 7.4l2.8 2.8"/></svg>
+                        <span data-i18n-key="viz1_title">Interactive: Score Field & Langevin Dynamics</span>
+                        <span class="viz-title-tag">click to interact</span>
+                    </div>
+                    <div class="viz-canvas-wrap"><canvas class="viz-canvas"></canvas></div>
                     <div class="viz-controls">
                         <label><input type="checkbox" id="viz-score-noise" checked> Stochastic</label>
+                        <span class="viz-separator"></span>
                         <label>Step size: <input type="range" id="viz-score-step" min="1" max="20" value="8"></label>
+                        <span class="viz-separator"></span>
                         <button class="viz-btn" id="viz-score-reset">Reset</button>
                     </div>
                     <p class="viz-caption" data-i18n-key="viz_score_caption"></p>
@@ -198,13 +208,21 @@ window.MathJax = {
                 </div>
 
                 <div class="viz-container" id="viz-forward-diffusion">
-                    <canvas class="viz-canvas"></canvas>
+                    <div class="viz-title-bar">
+                        <svg class="viz-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 17l5-5-5-5M6 17l5-5-5-5"/></svg>
+                        <span data-i18n-key="viz2_title">Interactive: Forward Diffusion Process</span>
+                        <span class="viz-title-tag">drag slider</span>
+                    </div>
+                    <div class="viz-canvas-wrap"><canvas class="viz-canvas"></canvas></div>
                     <div class="viz-controls">
+                        <button class="viz-btn viz-btn-primary" id="viz-forward-play">&#9654; Play</button>
+                        <span class="viz-separator"></span>
                         <label>t: <input type="range" id="viz-forward-t" min="0" max="100" value="0"></label>
                         <select id="viz-forward-mode">
                             <option value="vp">VP (DDPM)</option>
                             <option value="ve">VE (SMLD)</option>
                         </select>
+                        <span class="viz-separator"></span>
                         <button class="viz-btn" id="viz-forward-reset">Reset</button>
                     </div>
                     <p class="viz-caption" data-i18n-key="viz_forward_caption"></p>
@@ -235,10 +253,17 @@ window.MathJax = {
                 </div>
 
                 <div class="viz-container" id="viz-reverse-sampling">
-                    <canvas class="viz-canvas"></canvas>
+                    <div class="viz-title-bar">
+                        <svg class="viz-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/></svg>
+                        <span data-i18n-key="viz3_title">Interactive: Reverse SDE vs Probability Flow ODE</span>
+                        <span class="viz-title-tag">animated</span>
+                    </div>
+                    <div class="viz-canvas-wrap"><canvas class="viz-canvas"></canvas></div>
                     <div class="viz-controls">
-                        <button class="viz-btn" id="viz-reverse-start">Start</button>
+                        <button class="viz-btn viz-btn-primary" id="viz-reverse-start">&#9654; Start</button>
+                        <span class="viz-separator"></span>
                         <label>Speed: <input type="range" id="viz-reverse-speed" min="1" max="10" value="1"></label>
+                        <span class="viz-separator"></span>
                         <button class="viz-btn" id="viz-reverse-reset">Reset</button>
                     </div>
                     <p class="viz-caption" data-i18n-key="viz_reverse_caption"></p>
@@ -288,10 +313,16 @@ window.MathJax = {
                 <div data-i18n-key="cond_cfg_p1"></div>
 
                 <div class="viz-container" id="viz-guidance">
-                    <canvas class="viz-canvas"></canvas>
+                    <div class="viz-title-bar">
+                        <svg class="viz-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <span data-i18n-key="viz4_title">Interactive: Classifier-Free Guidance Strength</span>
+                        <span class="viz-title-tag">drag slider</span>
+                    </div>
+                    <div class="viz-canvas-wrap"><canvas class="viz-canvas"></canvas></div>
                     <div class="viz-controls">
                         <label>&gamma;: <input type="range" id="viz-guidance-gamma" min="0" max="50" value="10"></label>
-                        <span id="viz-guidance-gamma-val">1.0</span>
+                        <span class="viz-gamma-display" id="viz-guidance-gamma-val">1.0</span>
+                        <span class="viz-separator"></span>
                         <button class="viz-btn" id="viz-guidance-reset">Reset</button>
                     </div>
                     <p class="viz-caption" data-i18n-key="viz_guidance_caption"></p>
@@ -350,10 +381,17 @@ window.MathJax = {
                 </div>
 
                 <div class="viz-container" id="viz-flow-vs-diffusion">
-                    <canvas class="viz-canvas"></canvas>
+                    <div class="viz-title-bar">
+                        <svg class="viz-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        <span data-i18n-key="viz5_title">Interactive: Flow Matching vs Score-based Diffusion</span>
+                        <span class="viz-title-tag">animated</span>
+                    </div>
+                    <div class="viz-canvas-wrap"><canvas class="viz-canvas"></canvas></div>
                     <div class="viz-controls">
-                        <button class="viz-btn" id="viz-flow-start">Start</button>
+                        <button class="viz-btn viz-btn-primary" id="viz-flow-start">&#9654; Start</button>
+                        <span class="viz-separator"></span>
                         <label>Speed: <input type="range" id="viz-flow-speed" min="1" max="10" value="1"></label>
+                        <span class="viz-separator"></span>
                         <button class="viz-btn" id="viz-flow-reset">Reset</button>
                     </div>
                     <p class="viz-caption" data-i18n-key="viz_flow_caption"></p>
@@ -402,7 +440,7 @@ window.MathJax = {
 
         <footer class="footer fade-in-section">
             <p data-i18n-key="footer_text">
-               &copy; 2025 Hai-Long Qin. All rights reserved. | Last updated: March 2026
+               &copy; 2026 Hai-Long Qin. All rights reserved. | Last updated: March 2026
             </p>
         </footer>
     </div>
@@ -416,8 +454,8 @@ window.MathJax = {
             <textarea id="bibtex-code" readonly>@article{qin-diffcomm,
     author  = {H. L. Qin and J. Dai and G. Lu and S. Shao and S. Wang and T. Xu and W. Zhang and P. Zhang and K. B. Letaief},
     title   = {Generative AI Meets 6G and Beyond: Diffusion Models for Semantic Communications},
-    journal = {arXiv preprint arXiv:2511.08416},
-    year    = {2025}
+    journal = {IEEE Communications Surveys & Tutorials},
+    year    = {2026}
 }</textarea>
             <div class="modal-actions">
                 <button id="copy-bibtex-btn" data-i18n-key="bib_copy">Copy to Clipboard</button>

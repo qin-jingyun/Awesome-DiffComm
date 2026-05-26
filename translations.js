@@ -16,10 +16,10 @@ en: {
     author_9: 'Khaled B. Letaief<sup>5</sup>',
     affiliation1: "<sup>1</sup>Beijing University of Posts and Telecommunications (BUPT)",
     affiliation2: "<sup>2</sup>Shanghai Jiao Tong University (SJTU)",
-    affiliation3: "<sup>3</sup>University of Shanghai for Science and Technology (USST)",
+    affiliation3: "<sup>3</sup>East China Normal University (ECNU)",
     affiliation4: "<sup>4</sup>Tsinghua University (THU)",
     affiliation5: "<sup>5</sup>Hong Kong University of Science and Technology (HKUST)",
-    venueInfo: "IEEE Communications Surveys &amp; Tutorials (COMST), Under Review",
+    venueInfo: "Accepted by IEEE Communications Surveys &amp; Tutorials (COMST), 2026",
     btn_paper: "Paper",
     tooltip_cite: "Cite this paper",
     tooltip_lang: "Language",
@@ -34,7 +34,7 @@ en: {
     nav_references: "References",
 
     // ===== TL;DR =====
-    tldr_content: `<p>This is a companion tutorial page for the IEEE COMST paper (under review) <a href="https://arxiv.org/abs/2511.08416" target="_blank"><i>"Generative AI Meets 6G and Beyond: Diffusion Models for Semantic Communications"</i></a> (arXiv: 2511.08416). Semantic communications represent a paradigm shift from bit-accurate transmission to meaning-centric communication, where receivers reconstruct content from compact semantic representations rather than raw bitstreams. Among generative models, diffusion models stand out for their superior generation quality, stable training dynamics, and rigorous theoretical underpinnings, making them particularly well suited as the decoding backbone for generative semantic communication systems.</p>
+    tldr_content: `<p>This is a companion tutorial page for the IEEE COMST paper <a href="https://arxiv.org/abs/2511.08416" target="_blank"><i>"Generative AI Meets 6G and Beyond: Diffusion Models for Semantic Communications"</i></a> (arXiv: 2511.08416). Semantic communications represent a paradigm shift from bit-accurate transmission to meaning-centric communication, where receivers reconstruct content from compact semantic representations rather than raw bitstreams. Among generative models, diffusion models stand out for their superior generation quality, stable training dynamics, and rigorous theoretical underpinnings, making them particularly well suited as the decoding backbone for generative semantic communication systems.</p>
 <p><b>What you will learn:</b></p>
 <ol>
 <li><b>Fundamentals of Diffusion Models</b>: Score matching, Langevin dynamics, stochastic differential equations (SDEs), and probability flow ODE solvers.</li>
@@ -97,7 +97,8 @@ $$\\mathcal{J}(\\boldsymbol{\\theta}) := \\mathbb{E}_{p_{\\mathrm{data}}(\\mathb
 $$\\mathbf{x}_{i} = \\mathbf{x}_{i-1} + \\zeta\\, \\boldsymbol{s}_{\\boldsymbol{\\theta}}(\\mathbf{x}_{i-1}) + \\sqrt{2\\zeta}\\, \\boldsymbol{\\epsilon}, \\quad \\boldsymbol{\\epsilon} \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I}),$$
 <p>where $\\zeta$ is the step size, $\\boldsymbol{\\epsilon} \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I})$ denotes standard Gaussian noise, and $\\mathbf{I}$ is the identity matrix. Each update has three components: the current position $\\mathbf{x}_{i-1}$; a <b>deterministic drift</b> toward higher-probability regions guided by the learned score $\\boldsymbol{s}_{\\boldsymbol{\\theta}}(\\mathbf{x}_{i-1})$; and <b>stochastic perturbations</b> $\\boldsymbol{\\epsilon}$ that prevent the dynamics from collapsing into local modes. When $\\zeta \\to 0$ and $N \\to \\infty$, the sampling endpoint $\\mathbf{x}_N$ converges exactly to the target distribution $p_{\\mathrm{data}}(\\mathbf{x})$ under mild regularity conditions.</p>`,
 
-    viz_score_caption: "To build geometric intuition for score-based sampling, this interactive visualizes the score field of a 2D Gaussian mixture. Arrows show $\\nabla_{\\mathbf{x}} \\log p(\\mathbf{x})$ pointing toward high-density regions. Click to place a particle and watch it follow Langevin dynamics.",
+    viz1_title: "Interactive: Score Field &amp; Langevin Dynamics",
+    viz_score_caption: "This interactive visualizes the score field $\\nabla_{\\mathbf{x}} \\log p(\\mathbf{x})$ of a balanced 2D Gaussian mixture with three modes $(\\mu_1, \\mu_2, \\mu_3)$ arranged across the full canvas with mixing weights $(\\pi_1,\\pi_2,\\pi_3)=(0.36,\\,0.32,\\,0.32)$. White arrows indicate the score direction and relative magnitude; contour lines mark iso-density levels; the bottom-left colorbar shows $\\|\\nabla \\log p\\|$. Click anywhere to seed particles. With <b>Stochastic</b> enabled the dynamics follow Langevin MCMC, $\\mathbf{x}_{i+1} = \\mathbf{x}_i + \\zeta\\,\\nabla \\log p(\\mathbf{x}_i) + \\sqrt{2\\zeta}\\,\\boldsymbol{\\epsilon}$, and particles explore <em>all</em> modes; disable it for pure gradient ascent (deterministic, mode-collapsing). The top-right panel reports the current step size $\\zeta$ and iteration count.",
 
     code_sm_title: "Python: Score Matching &amp; Langevin Sampling (for hands-on understanding of the DSM loss and iterative sampling)",
     code_sm_body: `<p>A minimal PyTorch implementation of denoising score matching and Langevin dynamics sampling:</p>
@@ -224,7 +225,8 @@ $$\\mathbf{x}_{i-1} \\approx \\frac{1}{\\sqrt{1-\\beta_i}}\\left[\\mathbf{x}_i +
         loss = <span class="function">ddpm_train_step</span>(model, x_0)
         optimizer.zero_grad(); loss.backward(); optimizer.step()</pre></div>`,
 
-    viz_forward_caption: "To visualize how data structure is progressively destroyed, this interactive shows the forward diffusion process. Drag the slider to see data points dissolve into noise under VE or VP schedules.",
+    viz2_title: "Interactive: Forward Diffusion Process",
+    viz_forward_caption: "This interactive shows how the forward SDE progressively destroys data structure. The inset chart displays the noise schedule: VP mode shows $\\bar{\\alpha}(t) = e^{-5t^2}$ (signal attenuation), while VE mode shows $\\sigma(t) = t^2 \\cdot 3$ (noise growth). The SNR indicator (VP only) tracks signal-to-noise ratio in dB. The bottom histogram shows the marginal distribution $p_t(x_1)$ — watch it transition from bimodal to unimodal Gaussian as $t \\to 1$. Use auto-play or drag the slider to observe the diffusion at your own pace.",
 
     // §3.1.3 Probability Flow ODEs & Solvers
     ode_title: "Probability Flow ODEs &amp; Solvers",
@@ -259,7 +261,8 @@ $$\\mathrm{d}\\mathbf{x} = \\left[ \\boldsymbol{f}(\\mathbf{x}, t) - \\frac{1}{2
 </ol>
 <p><b>On the role of stochasticity:</b> a common misconception is that per-step noise is the primary source of sample diversity. In reality, the fundamental source of diversity is the random initial sample $\\mathbf{x}(T) \\sim p_T$: different starting points trace different deterministic trajectories under the PF ODE regardless of solver type. Per-step noise in the SDE serves a <i>corrective</i> function, helping the trajectory explore nearby probability mass and compensate for accumulated score estimation errors, rather than being the primary diversity mechanism.</p>`,
 
-    viz_reverse_caption: "To contrast stochastic and deterministic generation, this interactive compares reverse sampling. Left panel shows stochastic reverse SDE (wiggly paths); right panel shows deterministic PF ODE (smooth paths). Both converge to the same data distribution.",
+    viz3_title: "Interactive: Reverse SDE vs Probability Flow ODE",
+    viz_reverse_caption: "This side-by-side comparison contrasts two reverse-time samplers. <b>Left — Reverse SDE</b>: the stochastic predictor injects noise $\\sqrt{\\beta(t)}\\,d\\bar{\\mathbf{w}}$ at every step, producing wiggly trajectories and requiring many small steps (here $100$ NFE) to integrate accurately. <b>Right — PF ODE</b>: an high-order ODE solver (e.g. DPM-Solver / DEIS) discretises the deterministic probability-flow ODE with far larger steps, reaching the same marginals $p_t$ in roughly <b>$4\\times$ fewer evaluations</b> (here $25$ NFE) — the tick marks on each path show how few waypoints are visited. The per-panel status boxes report live $\\text{NFE}$ usage and a normalised convergence bar; the ODE panel finishes and freezes at $t=0$ while the SDE is still mid-flight. Both methods converge to the same $p_{\\text{data}}$; the ODE simply does so via straighter, deterministic paths.",
 
     // ===== §3.2 Conditional Diffusion Models =====
     cond_title: "Conditional Diffusion Models",
@@ -332,7 +335,8 @@ $$\\boldsymbol{\\epsilon}_{\\boldsymbol{\\theta}}(\\mathbf{x}|\\mathbf{y},t) = (
 <p>When $\\gamma=0$: unconditional; $\\gamma=1$: standard conditional; $\\gamma>1$: amplified conditional (improves quality at the cost of diversity). CFG avoids the noise adversity and optimization failure problems of CG, at the cost of running the model twice per step.</p>
 <p>The elegance of CFG lies in its unified training scheme: because the model naturally adapts to different noise levels for both conditional and unconditional generation, it sidesteps the noise adversity problem of CG. Since conditional information directly influences denoising predictions during training, gradient directions inherently align with generation objectives, circumventing optimization failure. However, CFG introduces its own trade-offs: as $\\gamma$ increases, sample diversity typically decreases, potentially causing mode collapse. Running the model twice per inference step (once conditional, once unconditional) doubles the computational cost. The optimal $\\gamma$ also varies across conditions and datasets, requiring careful tuning.</p>`,
 
-    viz_guidance_caption: "To develop intuition for how conditioning steers generation, this interactive visualizes guidance strength. The slider controls $\\gamma$. As $\\gamma$ increases, generated samples concentrate around the measurement constraint.",
+    viz4_title: "Interactive: Classifier-Free Guidance Strength",
+    viz_guidance_caption: "This interactive demonstrates Bayesian posterior steering via classifier-free guidance (CFG). The dashed blue ellipse is the prior $p(\\mathbf{x})$; the red dashed line marks the conditioning signal $\\mathbf{y}$; the solid purple ellipse is the posterior $p(\\mathbf{x}\\mid\\mathbf{y}) \\propto p(\\mathbf{y}\\mid\\mathbf{x})\\,p(\\mathbf{x})$ under a Gaussian conjugate model (posterior mean $\\mu_+\\!=\\!\\mu+(\\mathbf{y}-\\mu)\\,\\gamma/(\\gamma+1)$, variance shrunk by $1/(1+\\gamma)$). As $\\gamma$ grows, samples shift from blue (prior-dominated) toward purple/red (signal-dominated). At inference, CFG implements this by interpolating noise predictions $\\tilde{\\boldsymbol{\\epsilon}}=(1+\\gamma)\\boldsymbol{\\epsilon}_{\\boldsymbol{\\theta}}(\\mathbf{x},\\mathbf{y})-\\gamma\\,\\boldsymbol{\\epsilon}_{\\boldsymbol{\\theta}}(\\mathbf{x})$; $\\gamma\\!=\\!0$ yields unconditional sampling, while large $\\gamma$ collapses samples toward $\\mathbf{y}$ at the cost of diversity.",
 
     // ===== Chapter 7: Consistency Models =====
     cm_title: "Consistency Models",
@@ -412,7 +416,8 @@ $$\\mathcal{L}(\\boldsymbol{\\theta}) = \\mathbb{E}_{t \\sim \\mathcal{U}[0,1],\
         x = x + velocity_net(x, t) * dt  <span class="comment"># Euler integration</span>
     <span class="keyword">return</span> x</pre></div>`,
 
-    viz_flow_caption: "To illustrate the efficiency advantage of straight transport paths, this interactive compares flow matching vs diffusion paths. Left panel shows curved SDE/ODE trajectories; right panel shows straight flow-matching paths between the same endpoints.",
+    viz5_title: "Interactive: Flow Matching vs Score-based Diffusion",
+    viz_flow_caption: "This side-by-side comparison highlights the transport efficiency of flow matching. <b>Left — Score-based diffusion</b>: curved, stochastic trajectories from noise $\\pi_0$ to data $\\pi_1$, integrated with Euler–Maruyama over many small steps (here $100$ NFE). <b>Right — Flow matching</b>: straight conditional paths $\\psi_t(\\mathbf{x})=(1-t)\\mathbf{x}_0+t\\mathbf{x}_1$ integrated by forward Euler; because the learned velocity field is nearly affine, only a handful of large steps are needed (here $10$ NFE, $\\sim\\!10\\times$ fewer). The waypoint dots on each FM path expose its few-step nature. The per-panel status boxes report live $\\text{NFE}$ usage and the accumulated transport cost — flow matching paths are markedly shorter, with fewer discretisation errors and lower wall-clock cost for the same endpoint distribution.",
 
     // ===== Chapter 9: Schrödinger Bridges =====
     sb_title: "Schr&ouml;dinger Bridges",
@@ -536,7 +541,7 @@ $$\\nabla_{\\boldsymbol{\\theta}} \\mathcal{J}(\\boldsymbol{\\theta}) = \\mathbb
     bib_title: "BibTeX Citation",
     bib_copy: "Copy to Clipboard",
     bib_copied: "Copied!",
-    footer_text: "&copy; 2026 Hai-Long Qin. All rights reserved. | Last updated: March 2026"
+    footer_text: "&copy; 2026 Hai-Long Qin. All rights reserved. | Last updated: May 2026"
 },
 
 // =====================================================================
@@ -558,10 +563,10 @@ zh: {
     author_9: '李德富<sup>5</sup>',
     affiliation1: "<sup>1</sup>北京邮电大学 (BUPT)",
     affiliation2: "<sup>2</sup>上海交通大学 (SJTU)",
-    affiliation3: "<sup>3</sup>上海理工大学 (USST)",
+    affiliation3: "<sup>3</sup>华东师范大学 (ECNU)",
     affiliation4: "<sup>4</sup>清华大学 (THU)",
     affiliation5: "<sup>5</sup>香港科技大学 (HKUST)",
-    venueInfo: "IEEE Communications Surveys &amp; Tutorials (COMST)，审稿中",
+    venueInfo: "已录用于 IEEE Communications Surveys &amp; Tutorials (COMST), 2026年",
     btn_paper: "论文",
     tooltip_cite: "引用本文",
     tooltip_lang: "切换语言",
@@ -576,7 +581,7 @@ zh: {
     nav_references: "参考文献",
 
     // ===== 要点概述 =====
-    tldr_content: `<p>本页面是 IEEE Communications Surveys &amp; Tutorials (COMST) 在审论文<a href="https://arxiv.org/abs/2511.08416" target="_blank"><i>"Generative AI Meets 6G and Beyond: Diffusion Models for Semantic Communications"</i></a>（arXiv: 2511.08416）的配套教程。语义通信标志着通信范式从比特精确传输向语义中心的转变——接收端不再逐比特恢复原始数据流，而是从紧凑的语义表征中重建内容。在众多生成模型中，扩散模型凭借卓越的生成质量、稳定的训练过程和坚实的理论基础脱颖而出，尤为适合充当生成式语义通信系统的解码核心。</p>
+    tldr_content: `<p>本页面是 IEEE Communications Surveys &amp; Tutorials (COMST) 论文<a href="https://arxiv.org/abs/2511.08416" target="_blank"><i>"Generative AI Meets 6G and Beyond: Diffusion Models for Semantic Communications"</i></a>（arXiv: 2511.08416）的配套教程。语义通信标志着通信范式从比特精确传输向语义中心的转变——接收端不再逐比特恢复原始数据流，而是从紧凑的语义表征中重建内容。在众多生成模型中，扩散模型凭借卓越的生成质量、稳定的训练过程和坚实的理论基础脱颖而出，尤为适合充当生成式语义通信系统的解码核心。</p>
 <p><b>你将学到：</b></p>
 <ol>
 <li><b>扩散模型基础</b>：得分匹配、朗之万动力学、随机微分方程（SDE）以及概率流ODE求解器。</li>
@@ -640,7 +645,8 @@ $$\\mathcal{J}(\\boldsymbol{\\theta}) := \\mathbb{E}_{p_{\\mathrm{data}}(\\mathb
 $$\\mathbf{x}_{i} = \\mathbf{x}_{i-1} + \\zeta\\, \\boldsymbol{s}_{\\boldsymbol{\\theta}}(\\mathbf{x}_{i-1}) + \\sqrt{2\\zeta}\\, \\boldsymbol{\\epsilon}, \\quad \\boldsymbol{\\epsilon} \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I}),$$
 <p>其中$\\zeta$为步长，$\\boldsymbol{\\epsilon} \\sim \\mathcal{N}(\\mathbf{0}, \\mathbf{I})$为标准高斯噪声，$\\mathbf{I}$为单位矩阵。每次更新包含三个分量：当前位置$\\mathbf{x}_{i-1}$；由学习到的得分$\\boldsymbol{s}_{\\boldsymbol{\\theta}}(\\mathbf{x}_{i-1})$引导的朝高概率区域的<b>确定性漂移</b>；以及防止动力学陷入局部模态的<b>随机扰动</b>$\\boldsymbol{\\epsilon}$。当$\\zeta \\to 0$且$N \\to \\infty$时，在温和的正则条件下，采样终点$\\mathbf{x}_N$精确收敛至目标分布$p_{\\mathrm{data}}(\\mathbf{x})$。</p>`,
 
-    viz_score_caption: "为建立对基于得分采样的几何直觉，此交互演示展示二维高斯混合的得分场。箭头表示 $\\nabla_{\\mathbf{x}} \\log p(\\mathbf{x})$，指向高密度区域。点击放置粒子，观察其遵循朗之万动力学的运动轨迹。",
+    viz1_title: "交互演示：得分场与朗之万动力学",
+    viz_score_caption: "此交互演示展示一个均衡布局的三模态（$\\mu_1, \\mu_2, \\mu_3$）二维高斯混合的得分场 $\\nabla_{\\mathbf{x}} \\log p(\\mathbf{x})$，混合权重为 $(\\pi_1,\\pi_2,\\pi_3)=(0.36,\\,0.32,\\,0.32)$，三模态均匀铺满画布。白色箭头标示得分方向与相对幅值；等值线显示等密度水平；左下角色条展示 $\\|\\nabla \\log p\\|$。点击任意位置即可放置粒子。当 <b>Stochastic</b> 开启时，演化遵循朗之万 MCMC 迭代 $\\mathbf{x}_{i+1} = \\mathbf{x}_i + \\zeta\\,\\nabla \\log p(\\mathbf{x}_i) + \\sqrt{2\\zeta}\\,\\boldsymbol{\\epsilon}$，粒子最终遍历<em>所有</em>模态；关闭后退化为纯梯度上升（确定性、易陷入单一模态）。右上角实时显示当前步长 $\\zeta$ 与迭代次数。",
 
     code_sm_title: "Python：得分匹配与朗之万采样（动手理解DSM损失与迭代采样）",
     code_sm_body: `<p>去噪得分匹配与朗之万动力学采样的最小 PyTorch 实现：</p>
@@ -733,7 +739,8 @@ $$\\mathrm{d}\\mathbf{x} = \\underbrace{-\\frac{1}{2}\\beta(t)\\,\\mathbf{x}}_{\
 $$\\mathbf{x}_{i-1} \\approx \\frac{1}{\\sqrt{1-\\beta_i}}\\left[\\mathbf{x}_i + \\frac{\\beta_i}{2}\\,\\boldsymbol{s}(\\mathbf{x}_i)\\right] + \\sqrt{\\beta_i}\\,\\boldsymbol{\\epsilon},$$
 <p>与DDPM的祖先采样规则完全一致。线性收缩项 $-\\frac{1}{2}\\beta(t)\\mathbf{x}$ 抵消噪声注入，使边际方差保持有界为1，故名"方差保持型"。</p>`,
 
-    viz_forward_caption: "为直观展示数据结构如何被逐步破坏，此交互演示呈现前向扩散过程。拖动滑块，观察数据点在VE或VP噪声调度下逐渐溶解为噪声。",
+    viz2_title: "交互演示：前向扩散过程",
+    viz_forward_caption: "此交互演示展示前向SDE如何逐步破坏数据结构。内嵌图表显示噪声调度：VP模式展示 $\\bar{\\alpha}(t) = e^{-5t^2}$（信号衰减），VE模式展示 $\\sigma(t) = t^2 \\cdot 3$（噪声增长）。SNR指示器（仅VP模式）以dB为单位追踪信噪比变化。底部直方图显示边际分布 $p_t(x_1)$——观察其从双峰分布向单峰高斯分布的转变过程（$t \\to 1$）。可使用自动播放或手动拖动滑块以自定节奏观察扩散过程。",
 
     code_ddpm_title: "Python：DDPM 训练循环（动手理解VP-SDE前向过程与噪声预测损失）",
     code_ddpm_body: `<p>实现VP-SDE前向过程和 $\\boldsymbol{\\epsilon}$-预测损失的最小DDPM训练步骤：</p>
@@ -802,7 +809,8 @@ $$\\mathrm{d}\\mathbf{x} = \\left[ \\boldsymbol{f}(\\mathbf{x}, t) - \\frac{1}{2
 </ol>
 <p><b>关于随机性的常见误解：</b>人们常认为每步噪声是样本多样性的主要来源，但实际上多样性的根本来源是<b>随机初始样本</b> $\\mathbf{x}(T) \\sim p_T$——不同的起点在PF ODE下穿越不同的确定性轨迹。SDE中每步噪声起的是<i>校正</i>作用，帮助轨迹探索附近概率质量并弥补累积的得分估计误差，而非多样性的主因。</p>`,
 
-    viz_reverse_caption: "为对比随机与确定性生成方式，此交互演示比较反向采样过程。左面板为随机反向SDE（锯齿路径）；右面板为确定性PF ODE（平滑路径）。两者收敛至相同数据分布。",
+    viz3_title: "交互演示：反向SDE vs 概率流ODE",
+    viz_reverse_caption: "此并排对比展示两种反向时间采样器。<b>左侧——反向 SDE</b>：每一步都注入 $\\sqrt{\\beta(t)}\\,d\\bar{\\mathbf{w}}$ 随机噪声，导致轨迹锯齿明显，必须用许多小步才能数值稳定（此处 $100$ NFE）。<b>右侧——PF ODE</b>：高阶 ODE 求解器（如 DPM-Solver / DEIS）对确定性概率流 ODE 采用更大步长进行离散化，能以 <b>约 $4\\times$ 更少的函数评估</b> 抵达相同的边际分布 $p_t$（此处 $25$ NFE）——路径上的圆点即为各离散步骤的访问点。两个面板独立显示当前 $\\text{NFE}$ 使用量和归一化收敛条；ODE 面板提前收敛并停在 $t=0$，SDE 仍在继续。二者最终收敛到同一个 $p_{\\text{data}}$，但 ODE 路径更直、效率更高。",
 
     // ===== §3.2 条件扩散模型 =====
     cond_title: "条件扩散模型",
@@ -875,7 +883,8 @@ $$\\boldsymbol{\\epsilon}_{\\boldsymbol{\\theta}}(\\mathbf{x}|\\mathbf{y},t) = (
 <p>$\\gamma=0$为纯无条件生成；$\\gamma=1$为标准条件生成；$\\gamma>1$为增强条件（以多样性换取质量提升）。CFG避免了CG的噪声对抗和优化失败问题，代价是每步需运行两次模型。</p>
 <p>CFG的优雅之处在于统一的训练方案：模型自然地适应条件与无条件生成在不同噪声水平下的行为，回避了CG的噪声对抗性；条件信息在训练中直接影响去噪预测，梯度方向天然对齐生成目标，规避了优化失败。但CFG也有自身权衡：随$\\gamma$增大，样本多样性通常下降，可能引发模式坍缩；推理时需运行两次模型（有条件和无条件各一次），计算成本翻倍；最优$\\gamma$因条件和数据集而异，需仔细调优。</p>`,
 
-    viz_guidance_caption: "为建立条件化引导生成的直觉，此交互演示展示引导强度的可视化。滑块控制 $\\gamma$，随其增大，生成样本逐渐向测量约束集中。",
+    viz4_title: "交互演示：无分类器引导强度",
+    viz_guidance_caption: "此交互演示展示无分类器引导（CFG）实现的贝叶斯后验调控。蓝色虚线椭圆为先验 $p(\\mathbf{x})$；红色虚线标记条件信号 $\\mathbf{y}$；紫色实线椭圆为高斯共轭模型下的后验 $p(\\mathbf{x}\\mid\\mathbf{y}) \\propto p(\\mathbf{y}\\mid\\mathbf{x})\\,p(\\mathbf{x})$（后验均值 $\\mu_+\\!=\\!\\mu+(\\mathbf{y}-\\mu)\\,\\gamma/(\\gamma+1)$，方差按 $1/(1+\\gamma)$ 收缩）。随 $\\gamma$ 增大，样本由蓝色（先验主导）逐渐转为紫红色（信号主导）。推理时，CFG 通过对噪声预测进行外插实现该后验：$\\tilde{\\boldsymbol{\\epsilon}}=(1+\\gamma)\\boldsymbol{\\epsilon}_{\\boldsymbol{\\theta}}(\\mathbf{x},\\mathbf{y})-\\gamma\\,\\boldsymbol{\\epsilon}_{\\boldsymbol{\\theta}}(\\mathbf{x})$；$\\gamma\\!=\\!0$ 为无条件采样，$\\gamma$ 较大时样本坍缩至 $\\mathbf{y}$ 附近，多样性下降。",
 
     // ===== 第七章：一致性模型 =====
     cm_title: "一致性模型",
@@ -919,7 +928,8 @@ $$\\mathcal{L}(\\boldsymbol{\\theta}) = \\mathbb{E}_{t \\sim \\mathcal{U}[0,1],\
 </ul>
 <p>这一分类法沿三个设计轴组织扩散模型：概率路径的<b>几何形状</b>（弯曲 vs. 直线）、<b>动力学</b>（随机SDE vs. 确定性ODE）、以及<b>学习目标</b>（得分 $\\boldsymbol{s}_{\\boldsymbol{\\theta}}$ vs. 速度 $\\boldsymbol{v}_{\\boldsymbol{\\theta}}$ vs. 端点 $\\boldsymbol{c}_{\\boldsymbol{\\theta}}$）。</p>`,
 
-    viz_flow_caption: "为展示直线传输路径的效率优势，此交互演示对比流匹配与扩散路径。左面板为弯曲的SDE/ODE轨迹，右面板为相同端点间的直线流匹配路径。",
+    viz5_title: "交互演示：流匹配 vs 基于得分的扩散",
+    viz_flow_caption: "此并排对比凸显流匹配的传输效率优势。<b>左侧——基于得分的扩散</b>：在 Euler–Maruyama 离散化下，从噪声 $\\pi_0$ 到数据 $\\pi_1$ 的轨迹弯曲且伴有随机抖动，需要大量小步（此处 $100$ NFE）才能数值稳定。<b>右侧——流匹配</b>：学习到的直线条件路径 $\\psi_t(\\mathbf{x})=(1-t)\\mathbf{x}_0+t\\mathbf{x}_1$ 几乎是仿射的，因此前向 Euler 只需极少几步大步即可（此处 $10$ NFE，约 $10\\times$ 少于扩散）；路径上的圆点即为每个离散步的访问位置，直观体现“少步生成”的特性。两个面板独立显示当前 $\\text{NFE}$ 用量和累积传输代价——流匹配路径明显更短，对应更小的离散化误差与更低的实际墙钟成本，且抵达相同的终点分布。",
 
     code_fm_title: "Python：流匹配训练（动手理解沿直线路径的速度场回归）",
     code_fm_body: `<p>条件流匹配沿直线路径训练速度网络。损失函数的简洁性是相较于基于得分方法的一大优势：</p>
@@ -967,8 +977,8 @@ $$\\min_{P:\\, P_0 = p_0,\\, P_1 = p_1} \\mathbb{E}_P\\left[\\int_0^1 \\frac{1}{
 
     sb_p3: `<p>当源分布为高斯时，薛定谔桥退化为具有优化噪声调度的扩散模型。当两端均为数据分布时，它可实现<b>无配对域迁移</b>等超出常规扩散能力的任务。<b>图像到图像薛定谔桥（I2SB）</b>框架利用配对样本将桥学习简化为兼容标准DDPM训练的条件去噪目标，无需迭代的前向-反向拟合过程。</p>`,
 
-    // ===== §3.3 高效扩散模型 =====
-    eff_title: "高效扩散模型",
+    // ===== §3.3 高效扩散方法 =====
+    eff_title: "高效扩散方法",
     eff_p1: `<p>扩散模型虽能生成高质量内容，但迭代采样（数百至数千次神经网络评估）带来了显著的计算挑战。对于U-Net骨干网络，总推理开销为 $\\mathcal{O}(T C^2 HW)$，$T$ 为函数评估次数，$C$ 为通道维度，$H \\times W$ 为空间分辨率。五种主要加速策略分别针对不同的开销因子：</p>`,
 
     eff_table: `<table class="content-table">
@@ -1079,6 +1089,6 @@ $$\\nabla_{\\boldsymbol{\\theta}} \\mathcal{J}(\\boldsymbol{\\theta}) = \\mathbb
     bib_title: "BibTeX 引用",
     bib_copy: "复制到剪贴板",
     bib_copied: "已复制!",
-    footer_text: "&copy; 2026 秦海龙 版权所有 | 最后更新：2026年3月"
+    footer_text: "&copy; 2026 秦海龙 版权所有 | 最后更新：2026年5月"
 }
 };

@@ -192,6 +192,22 @@ h1 {
     width: 20px;
     height: 20px;
 }
+.btn-stars {
+    padding: 0;
+    border: none;
+    background: transparent;
+    line-height: 0;
+}
+.btn-stars:hover {
+    background: transparent;
+    color: inherit;
+    border: none;
+    box-shadow: none;
+    transform: translateY(-3px);
+}
+.btn-stars img {
+    height: 28px;
+}
         
 /* New Fixed Global Controls */
 .top-controls {
@@ -521,29 +537,81 @@ h1 {
 /* ===== Interactive Visualization Containers ===== */
 .viz-container {
     margin: 28px 0;
-    padding: 24px;
+    padding: 0;
     background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #d4e4f1;
-    box-shadow: 0 2px 10px rgba(43,108,176,0.06);
+    box-shadow: 0 2px 12px rgba(43,108,176,0.07);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.viz-container:hover {
+    box-shadow: 0 4px 20px rgba(43,108,176,0.12);
+    border-color: #b8d4f0;
+}
+/* Viz title bar */
+.viz-title-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+    border-bottom: 1px solid #d4e4f1;
+    font-family: var(--font-body);
+    font-size: 0.85em;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.02em;
+}
+.viz-title-bar .viz-title-icon {
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+}
+.viz-title-bar .viz-title-tag {
+    margin-left: auto;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    background: rgba(255,255,255,0.7);
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+.viz-canvas-wrap {
+    padding: 20px 20px 0 20px;
 }
 .viz-canvas {
     width: 100%;
-    height: 380px;
+    /* Fluid height: keep a consistent aspect ratio across screen sizes (16:9,
+       16:10, 3:2, etc.) so the canvas never ends up too short or too square.
+       min-height / max-height clamp the extremes so very wide or very narrow
+       viewports still get a usable visualisation. */
+    aspect-ratio: 24 / 10;
+    height: auto;
+    min-height: 260px;
+    max-height: 440px;
     background: #fdfdfe;
     border: 1px solid #d4e4f1;
-    border-radius: 6px;
+    border-radius: 8px;
     display: block;
     cursor: crosshair;
-    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04), inset 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.3s ease;
+}
+/* Fallback for browsers without aspect-ratio (very old Safari). */
+@supports not (aspect-ratio: 1 / 1) {
+    .viz-canvas { height: 380px; aspect-ratio: auto; }
+}
+.viz-canvas:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06), inset 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 .viz-controls {
     display: flex;
     align-items: center;
     gap: 14px;
-    margin-top: 14px;
+    padding: 14px 20px;
     flex-wrap: wrap;
-    font-size: 0.95em;
+    font-size: 0.92em;
     color: var(--color-text-secondary);
     font-weight: 500;
 }
@@ -553,50 +621,116 @@ h1 {
     gap: 6px;
 }
 .viz-controls input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
     width: 110px;
-    accent-color: var(--color-accent);
     height: 4px;
+    background: #d4e4f1;
+    border-radius: 2px;
+    outline: none;
+    transition: background 0.2s ease;
+}
+.viz-controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(43,108,176,0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.viz-controls input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 2px 8px rgba(43,108,176,0.4);
+}
+.viz-controls input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 4px rgba(43,108,176,0.3);
+}
+.viz-controls input[type="checkbox"] {
+    accent-color: var(--color-accent);
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
 }
 .viz-controls select {
     padding: 5px 10px;
     border: 1px solid var(--color-border);
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 0.88em;
     color: var(--color-text);
     background: white;
-    transition: border-color 0.2s ease;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .viz-controls select:hover {
     border-color: var(--color-accent);
+    box-shadow: 0 0 0 2px rgba(43,108,176,0.08);
 }
 .viz-btn {
     padding: 5px 16px;
-    border: 1px solid var(--color-accent);
-    border-radius: 5px;
+    border: 1.5px solid var(--color-accent);
+    border-radius: 6px;
     background: white;
     color: var(--color-accent);
     font-weight: 700;
     font-size: 0.85em;
     cursor: pointer;
     transition: all 0.2s ease;
+    letter-spacing: 0.01em;
 }
 .viz-btn:hover {
     background: var(--color-accent);
     color: white;
     transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(41, 128, 185, 0.25);
+    box-shadow: 0 3px 10px rgba(41, 128, 185, 0.25);
 }
 .viz-btn:active {
     transform: translateY(0);
-    box-shadow: none;
+    box-shadow: 0 1px 3px rgba(41, 128, 185, 0.15);
+}
+.viz-btn-primary {
+    background: var(--color-accent);
+    color: white;
+}
+.viz-btn-primary:hover {
+    background: var(--color-accent-darker);
+    border-color: var(--color-accent-darker);
+}
+.viz-controls .viz-separator {
+    width: 1px;
+    height: 20px;
+    background: var(--color-border);
+    flex-shrink: 0;
+}
+.viz-controls .viz-gamma-display {
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--color-accent);
+    background: rgba(43,108,176,0.06);
+    padding: 2px 8px;
+    border-radius: 4px;
+    min-width: 36px;
+    text-align: center;
 }
 .viz-caption {
-    margin-top: 12px;
-    font-size: 0.88em;
+    margin: 0;
+    padding: 12px 20px 16px 20px;
+    font-size: 0.86em;
     color: var(--color-text-secondary);
     font-style: italic;
-    line-height: 1.5;
+    line-height: 1.55;
     text-align: justify;
+    border-top: 1px solid rgba(212,228,241,0.5);
+    background: rgba(247,250,252,0.5);
 }
 
 /* ===== Content Tables ===== */
@@ -767,8 +901,16 @@ h1 {
 
 /* ===== Responsive additions ===== */
 @media (max-width: 768px) {
-    .viz-canvas { height: 220px; }
+    /* On narrow viewports, use a slightly squarer aspect ratio so the canvas
+       still has enough vertical space for overlays and labels. */
+    .viz-canvas { aspect-ratio: 16 / 10; min-height: 220px; max-height: 360px; }
+    .viz-canvas-wrap { padding: 12px 12px 0 12px; }
+    .viz-controls { padding: 10px 12px; gap: 8px; }
+    .viz-caption { padding: 10px 12px 14px 12px; }
+    .viz-title-bar { padding: 8px 12px; font-size: 0.8em; }
     .content-table { font-size: 0.85em; }
-    .viz-controls { gap: 8px; }
     .collapsible-toggle { padding: 10px 14px; font-size: 0.9em; }
+    @supports not (aspect-ratio: 1 / 1) {
+        .viz-canvas { height: 220px; }
+    }
 }
