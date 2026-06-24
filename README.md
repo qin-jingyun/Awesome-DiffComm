@@ -90,6 +90,7 @@ We believe this article may be helpful to the following groups of people:
     - [Modality Expansion](#modality-expansion)
     - [Domain Adaptation](#domain-adaptation)
     - [Task Generalization](#task-generalization)
+  - [🎲 Discrete Diffusion Models](#-discrete-diffusion-models)
   - [🛜 Diffusion Models for Semantic Communications](#-diffusion-models-for-semantic-communications)
     - [\[Preliminary\] Diffusion Models for Data Compression](#preliminary-diffusion-models-for-data-compression)
     - [Fidelity-Oriented Human Semantic Communications](#fidelity-oriented-human-semantic-communications)
