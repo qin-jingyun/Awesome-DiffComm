@@ -753,8 +753,8 @@ We thank the diffusion models and semantic communications research communities f
   <p>
     Maintained with ❤️ by the community members:
   </p>
-  <a href="https://github.com/qin-jingyun/SemCod/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=qin-jingyun/SemCod" alt="Contributors" />
+  <a href="https://github.com/qin-jingyun/Awesome-DiffComm/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=qin-jingyun/Awesome-DiffComm" alt="Contributors" />
   </a>
 </p>
 
