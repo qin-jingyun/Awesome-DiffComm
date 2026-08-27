@@ -541,7 +541,7 @@ $$\\nabla_{\\boldsymbol{\\theta}} \\mathcal{J}(\\boldsymbol{\\theta}) = \\mathbb
     bib_title: "BibTeX Citation",
     bib_copy: "Copy to Clipboard",
     bib_copied: "Copied!",
-    footer_text: "&copy; 2026 Hai-Long Qin. All rights reserved. | Last updated: May 2026"
+    footer_text: "&copy; 2026 Hai-Long Qin. All rights reserved. | Last updated: August 2026"
 },
 
 // =====================================================================
@@ -1089,6 +1089,6 @@ $$\\nabla_{\\boldsymbol{\\theta}} \\mathcal{J}(\\boldsymbol{\\theta}) = \\mathbb
     bib_title: "BibTeX 引用",
     bib_copy: "复制到剪贴板",
     bib_copied: "已复制!",
-    footer_text: "&copy; 2026 秦海龙 版权所有 | 最后更新：2026年5月"
+    footer_text: "&copy; 2026 秦海龙 版权所有 | 最后更新：2026年8月"
 }
 };
