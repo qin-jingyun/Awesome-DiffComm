@@ -778,7 +778,7 @@ If you find this article or repository helpful, please consider citing:
 ```bibtex
 @article{tan-ditjscc,
     author  = {K. Tan and J. Dai and S. Wang and G. Lu and S. Shao and K. Niu and W. Zhang and P. Zhang},
-    title   = {{DiT-JSCC}: Rethinking Deep {JSCC} with Diffusion Transformers and Semantic Representations},
+    title   = {DiT-JSCC: Rethinking Deep JSCC with Diffusion Transformers and Semantic Representations},
     journal = {IEEE Trans. Cogn. Commun. Netw.},
     volume  = {12},
     pages   = {9247--9262},
